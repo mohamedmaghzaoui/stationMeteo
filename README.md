@@ -1,27 +1,22 @@
-# MeteoSensor IOT
+# Mise en place d'une station météo
 
 
 
-## Getting started
+## Idée Générale
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Le but de ce projet est de récolter des données sur la condition météorologique d'un lieu en interieur. Pour cela nous allons créer des modules équipé de capteurs qui seront connecter par wifi à une base de donnée qui transmettra les informations sur site web pour être utilisé par tous.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Liaison des modules avec la base de donnée
 
-## Add your files
+Pour réaliser cette étapes, nous allons utilisé la méthode MQTT, qui fait envoyer les différentes informations (topic) des modules vers un serveur MQTT, tandis que la base de donnée écoute ce serveur à interval régulier et stock les informations.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+## Hardware
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/kropot/meteosensor-iot.git
-git branch -M main
-git push -uf origin main
-```
+Nous devrons faire nous même nos campteur avec des pièces fournies. Nous connecterons ceux-ci en wifi à la Raspberry pi qui contient la base de donnée ainsi que le site web.
 
-## Integrate with your tools
+## Interface avec l'utilisateur
 
+<<<<<<< HEAD
 - [ ] [Set up project integrations](https://gitlab.com/kropot/meteosensor-iot/-/settings/integrations)
 
 ## Collaborate with your team
@@ -91,3 +86,8 @@ For open source projects, say how it is licensed.
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
 test mohamed salut neo
+=======
+Nous avons choisis de créer un site internet plutôt qu'une application pour l'utilisateur car cela est rapide à mettre en place. Le site contiendra 
+une page d'accueil contenant toute les données de chaques capteurs ainsi que des liens vers des pages centrées sur chaques informations, contenant notemment des diagrammes de l'évolution au cours du temps de ces valeurs. Egalement, l'utilisateur aura accés à une page pour rajouter un ou plusieurs module ainsi que pour en supprimer. Cependant pour effectuer ces actions, il devra d'abord s'identifier avec un compte administrateur.
+Pour réaliser ce site, nous utiliserons le framework react.
+>>>>>>> 67d13a04344e1bbbddc316a5aafd8ffeb48b20ef
