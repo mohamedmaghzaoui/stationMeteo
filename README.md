@@ -14,6 +14,13 @@ Pour réaliser cette étapes, nous allons utilisé la méthode MQTT, qui fait en
 
 Nous devrons faire nous même nos campteur avec des pièces fournies. Nous connecterons ceux-ci en wifi à la Raspberry pi qui contient la base de donnée ainsi que le site web.
 
+## Sources
+
+vous pouvez retrouver notre brouillon sur :
+https://excalidraw.com/#room=de8b00aa47619d74fe9c,Nj7dCG1oobuYImcY2eiGCA
+
+---
+
 ## Interface avec l'utilisateur
 
 <<<<<<< HEAD
