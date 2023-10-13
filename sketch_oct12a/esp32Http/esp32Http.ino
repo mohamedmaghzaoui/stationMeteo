@@ -7,8 +7,8 @@
 Adafruit_BME280 bme;  // Create an instance of the BME280 sensor
 #define SDA_PIN 33
 #define SCL_PIN 32
-const char* ssid = "mohamed's Galaxy A14";
-const char* password = "testMohamedEsp32";
+const char* ssid = "HexIOT";
+const char* password = "H3xag0nePriv4te";
 
 void setup() {
   // Set up Serial for debugging output
@@ -72,7 +72,7 @@ void loop() {
   HTTPClient http;
 
   // Your server URL
-  const char* serverUrl = "http://192.168.50.92:3000/";
+  const char* serverUrl = "http://10.1.4.5:3000/";
 
   // Make HTTP POST request
   http.begin(serverUrl);
