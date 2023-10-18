@@ -3,29 +3,39 @@ const app = express();
 const PORT = 3000;
 app.use(express.json());
 
-let sensorData = null;
+let sensorDataArray = [];
 
 app.get("/", (req, res) => {
-  if (sensorData) {
-    res.send(`<html>
-                <head>
-                  <title>Sensor Data Page</title>
-                </head>
-                <body>
-                  <h1>Sensor Data</h1>
-                  <pre>${JSON.stringify(sensorData, null, 2)}</pre>
-                </body>
-              </html>`);
+  if (sensorDataArray.length > 0) {
+    res.send(`
+      <html>
+        <head>
+          <title>Sensor Data Page</title>
+        </head>
+        <body>
+          <h1>Sensor Data</h1>
+          <pre>${JSON.stringify(sensorDataArray, null, 2)}</pre>
+        </body>
+      </html>
+    `);
   } else {
     res.send("No sensor data available.");
   }
 });
 
-app.post("/", async (req, res) => {
+app.post("/", (req, res) => {
   try {
-    sensorData = req.body;
+    const sensorData = req.body;
+
+    if (!sensorData) {
+      res.status(400).send("Invalid request. Please provide sensorData.");
+      return;
+    }
+
+    sensorDataArray.push(sensorData);
+
     console.log("Received sensor data:", sensorData);
-    res.send("Sensor data received! " + JSON.stringify(sensorData));
+    res.send("Sensor data received!");
   } catch (error) {
     res.status(500).send("Error: " + error.message);
   }
