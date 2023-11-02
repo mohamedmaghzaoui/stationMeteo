@@ -9,12 +9,12 @@
     <title>Ajouter un module</title>
 </head>
 
-<body>
+<body class="bg-dark">
 
 
     <div class="d-flex flex-column">
         <header>
-            <nav class="navbar navbar-dark bg-dark fixed-top position-sticky">
+            <nav class="navbar navbar-dark bg-secondary bg-opacity-50 fixed-top position-sticky">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="./index.html">Sensor</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -48,9 +48,9 @@
         </header>
 
 
-        <div class="m-5 p-3 border rounded-4 d-flex flex-column align-items-center">
+        <div class="m-5 p-3 border rounded-4 d-flex flex-column align-items-center text-white">
             <h1 class="display-4">Ajouter un module</h1>
-            <form class="mt-5">
+            <form class="mt-4">
                 <div class="mb-3">
                     <label for="moduleName" class="form-label">Nom du module</label>
                     <input type="text" class="form-control" id="moduleName" aria-describedby="moduleNameHelp">
@@ -59,7 +59,7 @@
                 </div>
 
 
-                <p class="mt-5 mb-2 form-label">Type de module</p>
+                <p class="mt-2 mb-3 form-label">Type de module</p>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="humidity" name="humidity" value="humidity">
                     <label for="humidity"> humidité</label><br>
