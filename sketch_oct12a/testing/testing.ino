@@ -1,12 +1,8 @@
 #include <WiFi.h>
-#include <Adafruit_Sensor.h>
-#include <Adafruit_BME280.h>
+
 #include <ArduinoJson.h>
 #include <HTTPClient.h>
 
-Adafruit_BME280 bme;  // Create an instance of the BME280 sensor
-#define SDA_PIN 33
-#define SCL_PIN 32
 const char* ssid = "HexIOT";
 const char* password = "H3xag0nePriv4te";
 
@@ -14,11 +10,7 @@ void setup() {
   // Set up Serial for debugging output
   Serial.begin(9600);
 
-  Wire.begin(SDA_PIN, SCL_PIN);
-  if (!bme.begin(0x77)) {  // Adjust the address if necessary (0x76 or 0x77)
-    Serial.println("Could not find a valid BME280 sensor, check wiring!");
-    while (1);
-  }
+  
     // Connect to Wi-Fi
   WiFi.begin(ssid, password);
 
@@ -36,39 +28,14 @@ void setup() {
 void loop() {
   // Add your sensor reading and JSON data creation here
 
-  float altitude = bme.readAltitude(1013.25);
-  float temperature = bme.readTemperature();
-  float humidity = bme.readHumidity();
-  float pressure = bme.readPressure() / 100.0;
 
-  // Print sensor data
-  Serial.print("Temperature: ");
-  Serial.print(temperature);
-  Serial.println(" °C");
-
-  Serial.print("Pressure: ");
-  Serial.print(pressure);
-  Serial.println(" hPa");
-
-  Serial.print("Humidity: ");
-  Serial.print(humidity);
-  Serial.println(" %");
-
-  Serial.print("Altitude: ");
-  Serial.print(altitude);
-  Serial.println(" meters");
 
   // JSON data
-  String espId = WiFi.macAddress();
   DynamicJsonDocument doc(200);
-
- 
-  doc["macAddress"] = espId;
-  doc["name"] = "esp2";
-  doc["temperature"] = temperature;
-  doc["pressure"] = pressure;
-  doc["humidity"] = humidity;
-  doc["altitude"] = altitude;
+  doc["temperature"] = "test";
+  doc["pressure"] = "test2";
+  doc["humidity"] = "test3";
+  doc["altitude"] = "test4";
 
   String jsonString;
   serializeJson(doc, jsonString);
@@ -77,7 +44,7 @@ void loop() {
   HTTPClient http;
 
   // Your server URL
-  const char* serverUrl = "http://10.1.4.5:3000/sensor";
+  const char* serverUrl = "http://10.1.4.5:3000/";
 
   // Make HTTP POST request
   http.begin(serverUrl);
