@@ -17,12 +17,20 @@ Le premier groupe composés de Néo et Mohamed devaient s'occuper de la transmis
 Néo  à essayer de transmettre les données à l'aide du modèle MQTT.
 Il a réussi à envoyer des données à partir d'une vm d'un raspberry vers l'hôte, mais il n'a pas réussi à les transmettre vers
 l'application Mosquito. Cependant Mohamed à lui essayer de transmettre les données d'un esp 32 vers un server à l'aide de requette HTTP,
-après une bonne journée à avoir travaillé dessus il à réussi à obtenir les bon résultats du bme vers le server.
+après une bonne journée à avoir travaillé dessus il à réussi à obtenir les bon résultats qu'il avez envoyer vers le server.
 Quand au deuxième groupe composé de Loukas et Luka nous avons créer une maquette du site web à l'aide de figma, nous avons pu mettre en place
 tout ce que l'on attend de l'interface utilisiteur pour une facilité d'utilisation. Après avoir terminé Luka a commencé à écrire le readme pour
 avoir une trace écrite de l'objectif final et des différentes étapes à suivre de notre projet. et Loukas à commencer à écrire le journal de bord
 pour avoir un suivi de tout ce que nous avons réalisés chaque jour.
 
 ## 13/10/2023
-
  
+Pendant cette journée nous avons revu l'organisation de notre maquette figma. Nous avons réussi à envoyer cette fois-ci les données du bme 
+vers le serveur.
+
+## 18/10/2023
+
+Aujourd'hui nous avons commencer à modéliser les modules de la sation méteo. Nous avons envoyer les donnés de deux esp
+en même temps avec un délai de 10 secondes, nous avons aussi réussi à identifier chaque esp par leur adresse MAC.
+Nous avons aussi commencer à faire l'aspect visuel du site à l'aide de bootstrap, et avons commencer à regarder quelque vidéo sur du
+React js pour pouvoir rendre le site plus dynamique. 
