@@ -16,7 +16,7 @@
         <header>
             <nav class="navbar navbar-dark bg-dark fixed-top position-sticky">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Sensor</a>
+                    <a class="navbar-brand" href="./index.html">Sensor</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
                         <span class="navbar-toggler-icon"></span>
@@ -48,9 +48,9 @@
         </header>
 
 
-        <div class="m-5 p-3 border rounded-4">
+        <div class="m-5 p-3 border rounded-4 d-flex flex-column align-items-center">
             <h1 class="display-4">Ajouter un module</h1>
-            <form>
+            <form class="mt-5">
                 <div class="mb-3">
                     <label for="moduleName" class="form-label">Nom du module</label>
                     <input type="text" class="form-control" id="moduleName" aria-describedby="moduleNameHelp">
@@ -59,6 +59,7 @@
                 </div>
 
 
+                <p class="mt-5 mb-2 form-label">Type de module</p>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="humidity" name="humidity" value="humidity">
                     <label for="humidity"> humidité</label><br>
@@ -69,10 +70,10 @@
                 </div>
 
 
-                <div class="mb-3">
+                <div class="mb-5">
                     <div class="row align-items-center">
-                        <div class="col-2 ">
-                            <img alt="image" src=".\images\icones_carte.jpg" class="w-25">
+                        <div class="col-1 ">
+                            <img alt="image" src=".\images\icones_carte.jpg" class="w-100">
                         </div>
                         <div class="col-3 ">
                             <label for="inputposition" class="col-form-label rounded-4">Lieu</label>
@@ -98,53 +99,7 @@
 
 
 
-        <div class="container">
-            <h1 class="display-5 display-1">Ajouter un module</h1>
 
-            <div class="row d-flex align-items-center justify-items-center">
-
-            </div>
-            <div class="row">
-
-            </div>
-        </div>
-        <form class="container">
-            <div class="mb-3">
-                <div class="col-2">
-                    <label for="inputmodule" class="col-form-label">Type de module</label>
-                </div>
-                <div class="col-3">
-                    <input type="msg" id="inputmodule" class="form-control border-black" aria-describedby="NewModule">
-                </div>
-            </div>
-
-
-
-
-
-            <div class="mb-3">
-                <div class="col-2">
-                    <label for="inputposition" class="col-form-label">Lieu</label>
-                </div>
-                <div class="col-3">
-                    <select id="inputposition" class="form-select border-black" aria-describedby="Position">
-                        <option selected>--Choisissez le lieu de votre module--</option>
-                        <option value="1">Salle 1</option>
-                        <option value="2">Salle 2</option>
-                        <option value="3">Lab</option>
-                        <option value="4">Tisanerie</option>
-                    </select>
-
-                </div>
-                <div class="col-2">
-                    <a role="input"><img alt="image" src=".\images\icones_carte.jpg" class="w-25"></button>
-                </div>
-            </div>
-
-
-
-            <button type="submit" class="btn btn-primary">Valider</button>
-        </form>
 
     </div>
 
