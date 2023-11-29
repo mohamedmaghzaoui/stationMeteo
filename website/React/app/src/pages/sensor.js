@@ -1,10 +1,7 @@
-import React, { useEffect } from "react"; // Import React and useEffect
-import axios from "axios"; // Correct the import statement
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { useEffect } from "react"; // Import React and useEffect
 import { useState } from "react";
-
-function App() {
+import axios from "axios"; // Correct the import statement
+export const Sensor = () => {
   const url = "http://10.1.4.5:3000/sensor";
   const [sensorData, setSensorData] = useState(null);
 
@@ -13,8 +10,8 @@ function App() {
     async function fetchData() {
       try {
         const apiResponse = await axios.get(url);
+        setSensorData(apiResponse.data);
         console.log(apiResponse.data); // Log the response data
-        setSensorData()
       } catch (error) {
         console.error("Error:", error);
       }
@@ -23,7 +20,13 @@ function App() {
     fetchData(); // Call the fetchData function
   }, []); // The empty array [] ensures the effect runs once on component mount
 
-  return <div> </div>;
-}
-
-export default App;
+  return (
+    <div>
+      {sensorData === null ? (
+        <p>Loading...</p>
+      ) : (
+        sensorData.map((value) => <p>{value.temperature}</p>)
+      )}
+    </div>
+  );
+};
