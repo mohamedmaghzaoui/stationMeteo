@@ -7,17 +7,7 @@ sensorRouter.get("/", async (req, res) => {
     const sensorData = await SensorDb.findAll();
 
     if (sensorData.length > 0) {
-      res.send(`
-        <html>
-          <head>
-            <title>Sensor Data Page</title>
-          </head>
-          <body>
-            <h1>Sensor Data</h1>
-            <pre>${JSON.stringify(sensorData, null, 2)}</pre>
-          </body>
-        </html>
-      `);
+      res.json(sensorData);
     } else {
       res.send("No sensor data available.");
     }
