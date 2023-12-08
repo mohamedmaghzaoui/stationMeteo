@@ -1,20 +1,36 @@
 import { Link } from "react-router-dom"
+import { faEye, faEyeSlash, faL } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../../Css/Login.css"
+import { useState } from "react";
 
 export const Login=()=>{
+    const [showPassword,setShowPassword]=useState(false)
     return (   
 
-        <div>
+        <div >
             <form className="my-5">
 
-  <div class="form-outline offset-4 mb-4 w-25">
+  <div class="form-outline offset-4 mb-4 col-xl-3 col-5">
   <label class="form-label" for="form2Example1">Email address</label>
     <input type="email" id="form2Example1" class="form-control" />
    
   </div>
 
-  <div class="form-outline mb-4 offset-4 w-25">
+  <div class="position-relative form-outline mb-4 offset-4 w-25 col-xl-3 col-5">
   <label class="form-label" for="form2Example2">Password</label>
-    <input type="password" id="form2Example2" class="form-control" />
+
+  <input type="password" id class="form-control col-xl-3 col-5"  
+   />
+   {showPassword?
+     <   FontAwesomeIcon onClick={()=>setShowPassword(false)} id="icon" className="offset-xl-11"   icon={faEyeSlash}/>
+     :
+     <  FontAwesomeIcon id="icon" onClick={()=>setShowPassword(true)}  className="offset-xl-11"  icon={faEye}/>
+     
+     
+     }
+ 
+   
    
   </div>
 
