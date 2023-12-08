@@ -1,16 +1,17 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
-import { ReactComponent as SunIcon } from "../images/brightness-high.svg";
+
 import { useState } from "react";
 export const Navbar = () => {
   const [theme, setTheme] = useState("light");
   return (
-    <div data-bs-theme >
+    <div className=""  >
       <nav className="navbar navbar-expand-lg bg-body-tertiary navbar bg-primary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand">
             Station
           </a>
           <button
@@ -40,18 +41,28 @@ export const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" >
-                  Account
-                </Link>
+              <div class="dropdown">
+  <button class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+    Account
+  </button>
+  <ul class="dropdown-menu">
+    <li>
+      <Link className="dropdown-item" to={"/Login"}>Login </Link>
+      </li>
+      <li>
+      <Link className="dropdown-item" to={"/SignUp"}>Sign Up </Link>
+      </li>
+
+  </ul>
+</div>
               </li>
               <li className="nav-item">
                 <Link className="nav-link">API Docs</Link>
               </li>
               {/*dropdown begin */}
-              <li className="nav-item dropdown offset-xl-9  ">
+              <li className="nav-item dropdown  offset-xl-8  ">
                 <a
                   className="nav-link dropdown-toggle  "
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -80,7 +91,7 @@ export const Navbar = () => {
                     
                     }}
                       className="dropdown-item"
-                      href="#"
+
                     >
                       <FontAwesomeIcon cl icon={faSun} size="1x" />{" "}
                       <span className="mx-1">Light</span>
@@ -96,7 +107,6 @@ export const Navbar = () => {
 
                     }}
                       className="dropdown-item  "
-                      href="#"
                     >
                       <FontAwesomeIcon
                         icon={faMoon}

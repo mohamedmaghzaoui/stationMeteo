@@ -1,6 +1,6 @@
 export const NotFound = () => {
   return (
-    <div class="d-flex align-items-center justify-content-center vh-100">
+    <div style={{marginTop:"10%"}}>
       <div class="text-center row">
         <h1 className="display-1 fw-bold col-12">404</h1>
         <div class=" col-xl-12 col-lg-10  col-md-12  mt-5">

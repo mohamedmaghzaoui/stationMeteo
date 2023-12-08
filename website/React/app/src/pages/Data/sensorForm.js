@@ -43,7 +43,7 @@ export const SensorForm=(props)=>{
             <form onSubmit={handleSubmit(onSubmit)} className="input-form ">
                 <div className="row">
                 
-                <h4 className="col">Add a new module</h4>
+                <p className="col fs-3">Add a new module</p>
                 <FontAwesomeIcon
                       onClick={()=>exitForm()}
                       id="exit_icon"
@@ -80,8 +80,8 @@ export const SensorForm=(props)=>{
               
               {errors.place ?<p className="text-danger"> place is required</p> :<br/>}
                 <button type="submit" className="btn btn-primary col-2 mx-1">Add</button>
-                <button  onClick={()=>exitForm()
-                    } className="btn btn-danger">Exit</button>
+                <a  onClick={()=>exitForm()
+                    } className="btn btn-danger">Exit</a>
                 
                 
                
