@@ -1,18 +1,46 @@
 import { useState } from "react"
 import "../../Css/sensorForm.css"
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import {useForm} from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {yupResolver} from "@hookform/resolvers/yup"
+import * as yup from 'yup';
 
 export const SensorForm=(props)=>{
+    const moduleSchema =yup.object().shape({
+       
+        name:yup.string().required("name is required"),
+        //mac address format
+        macAddress: yup.string()
+        .required('MAC address is required')
+        .matches(/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/, 'Invalid MAC address'),
+        place:yup.string().required("place is required"),
+
+
+    }) 
+    //use the useForm hook for sending data
+    const {register,handleSubmit,formState:{errors}}=useForm(
+        {
+            resolver:yupResolver(moduleSchema)
+        }
+    )
+    //function to exit form and do animation
     const exitForm=()=>{
         setFormClass("hidden")
         setTimeout(()=>props.setForm("hidden"),1000)
 
     }
+    //yup schema for cliend validation
+   
+    //function to submitting data
+    const onSubmit=(data)=>{
+        console.log(data)
+
+    }
     const[formClass,setFormClass]=useState("shown")
      	return (
             <div className={`overlay ${formClass}`}>
-            <form className="input-form ">
+            <form onSubmit={handleSubmit(onSubmit)} className="input-form ">
                 <div className="row">
                 
                 <h4 className="col">Add a new module</h4>
@@ -26,14 +54,32 @@ export const SensorForm=(props)=>{
           
                
                 <br/>
-                <input  placeholder="Module Id" className="form-control" type="text" />
                 <br/>
-                <input placeholder="Module name" className="form-control" type="text" />
-                <br/>
-                <input placeholder="Module Mac address" className="form-control" type="text" />
+                <input  style={
+                    {
+                        borderColor:errors.name&&"red"
+                    
+                    }
+                    
+                    
+                    } placeholder="Module name" className="form-control" type="text" {...register("name")} />
+                {errors.name ?<p className="text-danger"> Name is required</p> :<br/>}
+                <input style=
+                {
+                    {
+                        borderColor:errors.macAddress&&"red"
+                    }
+
+                } placeholder="Module Mac address" className="form-control" type="text" {...register("macAddress")} />
+                {errors.macAddress ?<p className="text-danger"> mac address is not correcet   </p> :<br/>}
+                <input style={
+                    {
+                        borderColor:errors.place&&"red"
+                    }
+                    }  placeholder="Place" className="form-control" type="text"  {...register("place")}/>
               
-                <br/>
-                <button className="btn btn-primary col-2 mx-1">Add</button>
+              {errors.place ?<p className="text-danger"> place is required</p> :<br/>}
+                <button type="submit" className="btn btn-primary col-2 mx-1">Add</button>
                 <button  onClick={()=>exitForm()
                     } className="btn btn-danger">Exit</button>
                 
