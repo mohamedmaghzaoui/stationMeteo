@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
-import { faCloud } from "@fortawesome/free-solid-svg-icons";
+import { faSnowflake } from "@fortawesome/free-solid-svg-icons";
 
 export const Home = () => {
   return (
@@ -10,11 +10,11 @@ export const Home = () => {
       <img
         style={{ height: "480px" }}
         className="img-fluid w-100"
-        src="https://open-meteo.com/images/convective_clouds.webp"
+        src="https://open-meteo.com/images/snowy.webp"
         alt=""
       />
       <div className=" my-5 position-absolute top-0 start-50 translate-middle-x text-center w-100">
-        <FontAwesomeIcon icon={faCloud} size="5x" className="text-white" />
+        <FontAwesomeIcon icon={faSnowflake} size="5x" className="text-white" />
         <h1 className="text-light mt-3 fw-normal text-opacity-75 display-2">
           Station App
         </h1>

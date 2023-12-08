@@ -4,26 +4,30 @@
 #include <ArduinoJson.h>
 #include <HTTPClient.h>
 
-Adafruit_BME280 bme;  // Create an instance of the BME280 sensor
+Adafruit_BME280 bme; // Create an instance of the BME280 sensor
 #define SDA_PIN 33
 #define SCL_PIN 32
-const char* ssid = "HexIOT";
-const char* password = "H3xag0nePriv4te";
+const char *ssid = "HexIOT";
+const char *password = "H3xag0nePriv4te";
 
-void setup() {
+void setup()
+{
   // Set up Serial for debugging output
   Serial.begin(9600);
 
   Wire.begin(SDA_PIN, SCL_PIN);
-  if (!bme.begin(0x77)) {  // Adjust the address if necessary (0x76 or 0x77)
+  if (!bme.begin(0x77))
+  { // Adjust the address if necessary (0x76 or 0x77)
     Serial.println("Could not find a valid BME280 sensor, check wiring!");
-    while (1);
+    while (1)
+      ;
   }
-    // Connect to Wi-Fi
+  // Connect to Wi-Fi
   WiFi.begin(ssid, password);
 
   // Wait for connection
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED)
+  {
     delay(1000);
     Serial.println("Connecting to WiFi...");
   }
@@ -33,7 +37,8 @@ void setup() {
   Serial.println(WiFi.localIP());
 }
 
-void loop() {
+void loop()
+{
   // Add your sensor reading and JSON data creation here
 
   float altitude = bme.readAltitude(1013.25);
@@ -62,7 +67,6 @@ void loop() {
   String espId = WiFi.macAddress();
   DynamicJsonDocument doc(200);
 
- 
   doc["macAddress"] = espId;
   doc["name"] = "esp2";
   doc["temperature"] = temperature;
@@ -77,19 +81,22 @@ void loop() {
   HTTPClient http;
 
   // Your server URL
-  const char* serverUrl = "http://10.1.4.5:3000/sensor";
+  const char *serverUrl = "http://10.1.4.5:3000/sensor";
 
   // Make HTTP POST request
   http.begin(serverUrl);
   http.addHeader("Content-Type", "application/json");
   int httpResponseCode = http.POST(jsonString);
 
-  if (httpResponseCode > 0) {
+  if (httpResponseCode > 0)
+  {
     Serial.print("HTTP Response code: ");
     Serial.println(httpResponseCode);
     String response = http.getString();
     Serial.println("Response: " + response);
-  } else {
+  }
+  else
+  {
     Serial.print("Error in HTTP request: ");
     Serial.println(httpResponseCode);
   }

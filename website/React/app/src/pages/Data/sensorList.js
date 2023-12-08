@@ -1,9 +1,12 @@
 import { useEffect } from "react"; // Import React and useEffect
 import { useState } from "react";
+import { SensorHeader } from "./sensorHeader";
 import axios from "axios"; // Correct the import statement
+import { SensorForm } from "./sensorForm";
 export const Sensor = () => {
-  const url = "http://10.1.4.5:3000/sensor";
+  const url = "http://10.1.4.5:3000/Sensor";
   const [sensorData, setSensorData] = useState(null);
+  const[form,setForm]=useState("hidden");
 
   useEffect(() => {
     // Use useEffect to make the API request when the component mounts
@@ -22,6 +25,11 @@ export const Sensor = () => {
 
   return (
     <div>
+      <SensorHeader setForm={setForm}/>
+      
+      {form=="shown"&&(<SensorForm setForm={setForm}/>)}
+      
+
       {sensorData === null ? (
         <p>Loading...</p>
       ) : (
