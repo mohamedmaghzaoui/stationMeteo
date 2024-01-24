@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {yupResolver} from "@hookform/resolvers/yup"
 import * as yup from 'yup';
 
+
 export const SensorForm=(props)=>{
     const moduleSchema =yup.object().shape({
        
