@@ -33,14 +33,14 @@ export const SensorForm=(props)=>{
     //yup schema for cliend validation
    
     //function to submitting data
-    const onSubmit=(data)=>{
+    const submitData=(data)=>{
         console.log(data)
 
     }
     const[formClass,setFormClass]=useState("shown")
      	return (
             <div className={`overlay ${formClass}`}>
-            <form onSubmit={handleSubmit(onSubmit)} className="input-form ">
+            <form onSubmit={handleSubmit(submitData)} className="input-form ">
                 <div className="row">
                 
                 <p className="col fs-3">Add a new module</p>

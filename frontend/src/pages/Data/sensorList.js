@@ -4,7 +4,7 @@ import { SensorHeader } from "./sensorHeader";
 import axios from "axios"; // Correct the import statement
 import { SensorForm } from "./sensorForm";
 export const Sensor = () => {
-  const url = "http://10.1.4.5:3000/Sensor";
+  const url = "http://localhost:3000/sensor";
   const [sensorData, setSensorData] = useState(null);
   const[form,setForm]=useState("hidden");
 
