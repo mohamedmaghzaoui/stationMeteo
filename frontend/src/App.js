@@ -1,9 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-
 import "./Css/App.css";
-
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/home";
@@ -15,7 +13,7 @@ import { SignUp } from "./pages/User/signUp";
 
 function App() {
   return (
-    <div className="container-fluid" >
+    <div className="container-fluid">
       <Router>
         <Navbar />
         <Routes>
