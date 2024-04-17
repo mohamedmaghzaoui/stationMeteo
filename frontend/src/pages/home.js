@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-
+import { Link } from "react-router-dom";
 import { faSnowflake } from "@fortawesome/free-solid-svg-icons";
 
 export const Home = () => {
@@ -22,9 +22,9 @@ export const Home = () => {
           Connecting the Elements, Monitoring the Atmosphere — Your Personal
           Weather Station.
         </p>
-        <button type="button" class="btn btn-primary btn-lg ">
+        <Link to={"/login"} type="button" class="btn btn-primary btn-lg ">
           Login
-        </button>
+        </Link>
         <button type="button" class="mx-4 btn btn-outline-light btn-lg">
           Features
         </button>
