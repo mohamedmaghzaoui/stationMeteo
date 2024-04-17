@@ -54,7 +54,7 @@ export const Home = () => {
           </button>
           <button
             type="button"
-            class="rounded-pill btn button btn-outline-secondary btn-lg col-xl-3 col-lg-3 col-12 mx-2 my-2"
+            class="rounded-pill btn button btn-outline-secondary btn-lg col-xl-4 col-lg-3 col-12 mx-2 my-2"
           >
             Documentation
           </button>
