@@ -7,6 +7,7 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 import "../Css/home.css";
 
 export const Home = () => {
+  //   <FontAwesomeIcon icon={faSnowflake} size="5x" className="text-white" />
   return (
     <div className="position-relative container-fluid ">
       <img
@@ -16,7 +17,7 @@ export const Home = () => {
         alt=""
       />
       <div className=" my-5 position-absolute top-0 start-50 translate-middle-x text-center w-100">
-        <FontAwesomeIcon icon={faSnowflake} size="5x" className="text-white" />
+        <br />
         <h1 className="text-light mt-3 fw-normal text-opacity-75 display-2">
           Station App
         </h1>
@@ -55,15 +56,19 @@ export const Home = () => {
             class=" btn btn-lg col-xl-3 col-lg-3 col-12 "
           >
             <span className="mx-2 fw-semibold" style={{ color: "#fff" }}>
-              Sign in
+              Sign up
             </span>
             <FaArrowAltCircleRight color="white" />
           </button>
           <button
+            style={{ backgroundColor: "#5D6778" }}
             type="button"
-            class="rounded-pill btn button btn-outline-secondary btn-lg col-xl-4 col-lg-3 col-12 mx-2 my-2"
+            class=" btn button btn-lg col-xl-4 col-lg-3 col-12 mx-2 my-2"
           >
-            Documentation
+            <span className="mx-2 fw-semibold" style={{ color: "#fff" }}>
+              voir les docs
+            </span>
+            <FaArrowAltCircleRight color="white" />
           </button>
         </div>
         <img
