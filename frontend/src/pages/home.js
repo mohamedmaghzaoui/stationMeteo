@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Link } from "react-router-dom";
 import { faSnowflake } from "@fortawesome/free-solid-svg-icons";
+import { FaArrowAltCircleRight } from "react-icons/fa";
+import "../Css/home.css";
 
 export const Home = () => {
   return (
@@ -18,6 +20,7 @@ export const Home = () => {
         <h1 className="text-light mt-3 fw-normal text-opacity-75 display-2">
           Station App
         </h1>
+
         <p className="text-white fs-4 opacity-75">
           Connecting the Elements, Monitoring the Atmosphere — Your Personal
           Weather Station.
@@ -47,10 +50,14 @@ export const Home = () => {
             format.
           </p>
           <button
+            id="sign_button"
             type="button"
-            class="rounded-pill btn btn-primary btn-lg col-xl-3 col-lg-3 col-12 "
+            class=" btn btn-lg col-xl-3 col-lg-3 col-12 "
           >
-            Sign in
+            <span className="mx-2 fw-semibold" style={{ color: "#fff" }}>
+              Sign in
+            </span>
+            <FaArrowAltCircleRight color="white" />
           </button>
           <button
             type="button"
@@ -61,7 +68,7 @@ export const Home = () => {
         </div>
         <img
           className="img-fluid col-xl-4 col-lg-4 col-md-6 col-sm-8 col-12"
-          src="https://content.meteoblue.com/assets/images/elements/jsondata.png"
+          src="https://cdn.weatherapi.com/v5/assets/images/promo-figure-alt.svg"
           alt=""
           width="80%"
           height="auto"
