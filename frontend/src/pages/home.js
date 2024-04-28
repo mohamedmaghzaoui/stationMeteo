@@ -55,9 +55,13 @@ export const Home = () => {
             type="button"
             class=" btn btn-lg col-xl-3 col-lg-3 col-12 "
           >
-            <span className="mx-2 fw-semibold" style={{ color: "#fff" }}>
+            <Link
+              to={"/SignUp"}
+              className="mx-2 fw-semibold"
+              style={{ color: "#fff", textDecoration: "none" }}
+            >
               Sign up
-            </span>
+            </Link>
             <FaArrowAltCircleRight color="white" />
           </button>
           <button
