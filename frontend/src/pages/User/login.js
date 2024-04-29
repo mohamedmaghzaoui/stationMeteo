@@ -63,20 +63,24 @@ export const Login = () => {
           </div>
 
           <div class="col">
-            <a href="#!">Forgot password?</a>
+            <Link style={{ color: "#4550E6" }}>Forgot password?</Link>
           </div>
         </div>
 
         <button
+          style={{ backgroundColor: "#4550E6" }}
           type="button"
-          class="btn btn-primary btn-block mb-4 offset-xl-4 offset-lg-4 offset-2 col-xl-3 col-lg-3 col-md-5 col-sm-6 col-8"
+          class="btn text-light fw-medium btn-block mb-4 offset-xl-4 offset-lg-4 offset-2 col-xl-3 col-lg-3 col-md-5 col-sm-6 col-8"
         >
           Sign in
         </button>
 
         <div className="offset-xl-5 offset-2">
           <p>
-            Not a member? <Link to={"/SignUp"}>Register</Link>
+            Not a member?{" "}
+            <Link style={{ color: "#4550E6" }} to={"/SignUp"}>
+              Register
+            </Link>
           </p>
         </div>
       </form>
