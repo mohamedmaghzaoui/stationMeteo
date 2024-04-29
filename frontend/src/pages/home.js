@@ -35,8 +35,8 @@ export const Home = () => {
       </div>
       <div className="container-fluid w-100 row my-5 ">
         <div className=" col-xl-5 col-lg-5 col-md-5 col-sm-10 col-12 offset-xl-2 offset-lg-1 ">
-          <h2 className="display-5 col fw-normal">Best meteo Data</h2>
-          <h3>Query Global Weather Data for Free</h3>
+          <h2 className="display-4 col fw-bold">Best meteo Data</h2>
+          <h3 className="fw-bold display-4">Query Global Weather Data</h3>
           <p style={{ color: "#666276", font: "Noto Sans" }} className="fs-5">
             Integrate weather into your applications with the easiest-to-use
             global weather API including historical weather data, current
