@@ -93,7 +93,8 @@ export const SignUp = () => {
 
         <button
           type="button"
-          class="btn btn-primary btn-block mb-4 offset-xl-4 offset-lg-4 offset-2 col-xl-3 col-lg-3 col-md-5 col-sm-6 col-8"
+          style={{ backgroundColor: "#5cb377" }}
+          class="btn  text-light fw-bold btn-block mb-4 offset-xl-4 offset-lg-4 offset-2 col-xl-3 col-lg-3 col-md-5 col-sm-6 col-8"
         >
           Sign up
         </button>

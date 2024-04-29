@@ -31,7 +31,7 @@ export const Home = () => {
           Connecting the Elements, Monitoring the Atmosphere — Your Personal
           Weather Station.
         </p>
-        <Link to={"/login"} type="button" class="btn btn-primary btn-lg ">
+        <Link to={"/login"} type="button" class="btn btn-primary  btn-lg ">
           Login
         </Link>
         <button type="button" class="mx-4 btn btn-outline-light btn-lg">

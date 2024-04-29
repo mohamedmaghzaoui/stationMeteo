@@ -27,10 +27,18 @@ export const Navbar = () => {
             className="collapse navbar-collapse container-fluid"
             id="navbarSupportedContent"
           >
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 container-fluid">
+            <ul
+              style={{ fontSize: "16px" }}
+              className=" navbar-nav me-auto mb-2 mb-lg-0 container-fluid"
+            >
               <li className="nav-item  px-1">
                 <Link className="nav-link fw-medium " to={"/"}>
                   Home
+                </Link>
+              </li>
+              <li className="nav-item  px-1">
+                <Link className="nav-link fw-medium " to={"/"}>
+                  Pricing
                 </Link>
               </li>
 
@@ -62,11 +70,15 @@ export const Navbar = () => {
                   </ul>
                 </div>
               </li>
-              <li className="nav-item col-xl-1 col-lg-1 col-4">
+              <li className="nav-item px-xl-1 px-lg-1 ">
                 <Link className="nav-link fw-medium">API Docs</Link>
               </li>
+              <li className="nav-item  ">
+                <Link className="nav-link fw-medium">Contact us</Link>
+              </li>
+
               {/*dropdown begin */}
-              <li className="nav-item dropdown  offset-xl-8  ">
+              <li className="nav-item dropdown  offset-xl-7  ">
                 <a
                   className="nav-link dropdown-toggle  "
                   role="button"
