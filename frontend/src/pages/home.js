@@ -1,12 +1,17 @@
-import React from "react";
+//import libraries
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Link } from "react-router-dom";
 import { faSnowflake } from "@fortawesome/free-solid-svg-icons";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import "../Css/home.css";
+import { TypeAnimation } from "react-type-animation";
 
 export const Home = () => {
+  //dynamic text
+  const texts = ["json data", "weather information", "station api"];
+
   //   <FontAwesomeIcon icon={faSnowflake} size="5x" className="text-white" />
   return (
     <div className="position-relative container-fluid ">
@@ -49,6 +54,21 @@ export const Home = () => {
             weather information for personal use, our APIs provide seamless
             integration and deliver the data you need in a simple and accessible
             format.
+            <br />
+            Explore our{" "}
+            <TypeAnimation
+              sequence={[
+                "Json data",
+                1500,
+                "weather api",
+                1500,
+                "meteo information",
+                1500,
+              ]}
+              style={{ color: "#4550E6", fontWeight: "bold" }}
+              speed={20}
+              repeat={Infinity}
+            />
           </p>
           <button
             id="sign_button"
@@ -70,7 +90,7 @@ export const Home = () => {
             class=" btn button btn-lg col-xl-4 col-lg-3 col-12 mx-2 my-2"
           >
             <span className="mx-2 fw-semibold" style={{ color: "#fff" }}>
-              voir les docs
+              Voir les docs
             </span>
             <FaArrowAltCircleRight color="white" />
           </button>
