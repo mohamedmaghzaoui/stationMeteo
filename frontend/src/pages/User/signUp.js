@@ -7,14 +7,13 @@ import { useState } from "react";
 import "../../Css/User.css";
 
 export const SignUp = () => {
-  const [showPasswordError, setShowPasswordError] = useState(false);
   //user scheam for yup validation
   const userSchema = yup.object().shape({
     username: yup.string().required("username is required"),
     email: yup.string().required("email is required"),
     password: yup
       .string()
-      .required("password isrequired")
+      .required("password is required")
       .min(6, "password too short minimum 6 letters"),
     repeatedPassword: yup
       .string()
@@ -92,7 +91,7 @@ export const SignUp = () => {
         </div>
 
         <button
-          type="button"
+          type="submit"
           style={{ backgroundColor: "#5cb377" }}
           class="btn  text-light fw-bold btn-block mb-4 offset-xl-4 offset-lg-4 offset-2 col-xl-3 col-lg-3 col-md-5 col-sm-6 col-8"
         >
