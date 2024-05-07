@@ -1,3 +1,3 @@
 export const Price = () => {
-  return <div></div>;
+  return <div>price</div>;
 };

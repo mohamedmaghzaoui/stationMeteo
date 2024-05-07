@@ -10,6 +10,7 @@ import { Navbar } from "./pages/navbar";
 import { Sensor } from "./pages/Data/sensorList";
 import { Login } from "./pages/User/login";
 import { SignUp } from "./pages/User/signUp";
+import { Price } from "./pages/price";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/price" element={<Price />} />
         </Routes>
       </Router>
     </div>
