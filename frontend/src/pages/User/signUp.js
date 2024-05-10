@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import "../../Css/User.css";
+import axios from "axios";
 
 export const SignUp = () => {
   //user scheam for yup validation
@@ -29,8 +30,11 @@ export const SignUp = () => {
     resolver: yupResolver(userSchema),
   });
   //send data to symfony server
-  const submitData = (data) => {
-    console.log(data);
+  const submitData = (userData) => {
+    console.log(userData);
+    try {
+      const response = axios.post();
+    } catch (err) {}
   };
   return (
     <div>
