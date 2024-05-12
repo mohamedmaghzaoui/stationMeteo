@@ -2,18 +2,33 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 class UserController extends AbstractController
 {
-    #[Route('/user', name: 'app_user')]
-    public function index(): JsonResponse
+    #[Route('/users', name: "users")]
+    public function addUser(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher): Response
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/UserController.php',
-        ]);
+        $repository = $doctrine->getRepository(User::class);
+        //get data from user
+        $data = json_decode($request->getContent(), true);
+        $user = new User($passwordHasher);
+        $user->setEmail($data['email']);
+        $user->setName($data['name']);
+        $user->setPassword($data['password']);
+        $user->setRoles(["client"]);
+        $entityManger = $doctrine->getManager();
+        $entityManger->persist($user);
+        $entityManger->flush();
+
+        return $this->json(['user added succesfully ']);
     }
 }
