@@ -11,6 +11,7 @@ import { Sensor } from "./pages/Data/sensorList";
 import { Login } from "./pages/User/login";
 import { SignUp } from "./pages/User/signUp";
 import { Price } from "./pages/price";
+import { Contact } from "./pages/contact";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/price" element={<Price />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
     </div>
