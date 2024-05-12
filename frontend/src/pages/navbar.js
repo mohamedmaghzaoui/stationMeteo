@@ -74,7 +74,9 @@ export const Navbar = () => {
                 <Link className="nav-link fw-medium">API Docs</Link>
               </li>
               <li className="nav-item  ">
-                <Link className="nav-link fw-medium">Contact us</Link>
+                <Link to={"/contact"} className="nav-link fw-medium">
+                  Contact us
+                </Link>
               </li>
 
               {/*dropdown begin */}
