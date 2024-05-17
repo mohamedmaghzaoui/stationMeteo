@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const NotFound = () => {
   return (
     <div style={{ marginTop: "10%" }}>
@@ -9,9 +11,9 @@ export const NotFound = () => {
             <span class="text-danger">Opps!</span> Page not found.
           </p>
           <p class="lead">The page you’re looking for doesn’t exist.</p>
-          <a href="index.html" class="btn btn-primary">
-            Go Home
-          </a>
+          <Link to={"/"} className="btn btn-primary">
+            Go home
+          </Link>
         </div>
       </div>
     </div>
