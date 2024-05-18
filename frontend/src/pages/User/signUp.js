@@ -10,7 +10,7 @@ import axios from "axios";
 export const SignUp = () => {
   //user scheam for yup validation
   const userSchema = yup.object().shape({
-    username: yup.string().required("username is required"),
+    name: yup.string().required("name is required"),
     email: yup.string().required("email is required"),
     password: yup
       .string()
@@ -30,10 +30,12 @@ export const SignUp = () => {
     resolver: yupResolver(userSchema),
   });
   //send data to symfony server
-  const submitData = (userData) => {
+  const submitData = async (userData) => {
+    let url = "http://localhost:8000/users";
     console.log(userData);
     try {
-      const response = axios.post();
+      const response = await axios.post(url, userData);
+      console.log(response);
     } catch (err) {}
   };
   return (
@@ -41,11 +43,11 @@ export const SignUp = () => {
       <form onSubmit={handleSubmit(submitData)} className="my-5">
         <div class="form-outline offset-xl-4 offset-lg-4 offset-sm-3 offset-2 mb-4 col-xl-3 col-lg-3 col-md-4 col-sm-5 col-8">
           <label class="form-label" for="form2Example1">
-            Username
+            Name
           </label>
-          <input {...register("username")} type="text" class="form-control" />
-          {errors.username ? (
-            <p className="text-danger"> {errors.username.message} </p>
+          <input {...register("name")} type="text" class="form-control" />
+          {errors.name ? (
+            <p className="text-danger"> {errors.name.message} </p>
           ) : (
             <br />
           )}

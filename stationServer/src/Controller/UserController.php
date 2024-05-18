@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class UserController extends AbstractController
 {
     //function to verify user email for firest react registration form
-    #[Route('/users/verify', name: 'users/verify')]
+    #[Route('/users/verify', name: 'users/verify', methods: "Post")]
     public function verifyUser(Request $request, ManagerRegistry $doctrine): Response
     {
         $repository = $doctrine->getRepository(User::class);
