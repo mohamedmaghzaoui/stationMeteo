@@ -9,16 +9,45 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 export const Login = () => {
+  //login schema
+  const userSchema = yup.object().shape({
+    email: yup.string().required("Email is required"),
+    password: yup
+      .string()
+      .required("password is required")
+      .min(6, "password too short"),
+  });
   //state for show password icon and change type
   const [showPassword, setShowPassword] = useState(false);
+  //use use form for data managment
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(userSchema),
+  });
+  const submitData = (userData) => {
+    console.log(userData);
+  };
   return (
     <div>
-      <form className="my-5">
+      <form onSubmit={handleSubmit(submitData)} className="my-5">
         <div class="form-outline offset-xl-4 offset-lg-4 offset-sm-3 offset-2 mb-4 col-xl-3 col-lg-3 col-md-4 col-sm-5 col-8">
           <label class="form-label" for="form2Example1">
             Email address
           </label>
-          <input type="email" id="form2Example1" class="form-control" />
+          <input
+            {...register("email")}
+            type="email"
+            id="form2Example1"
+            class="form-control"
+          />
+          {errors.email ? (
+            <span className="text-danger"> {errors.email.message} </span>
+          ) : (
+            <span />
+          )}
         </div>
 
         <div class="position-relative form-outline offset-xl-4 offset-lg-4 offset-sm-3 offset-2 mb-4 col-xl-3 col-lg-3 col-md-4 col-sm-5 col-8">
@@ -27,6 +56,7 @@ export const Login = () => {
           </label>
 
           <input
+            {...register("password")}
             type={showPassword ? "text" : "password"}
             id
             class="form-control "
@@ -45,6 +75,11 @@ export const Login = () => {
               className="offset-xl-11 offset-lg-11 offset-10"
               icon={faEyeSlash}
             />
+          )}
+          {errors.password ? (
+            <span className="text-danger"> {errors.password.message} </span>
+          ) : (
+            <p />
           )}
         </div>
 
@@ -73,7 +108,7 @@ export const Login = () => {
 
         <button
           style={{ backgroundColor: "#4550E6" }}
-          type="button"
+          type="submit"
           class="btn text-light fw-medium btn-block mb-4 offset-xl-4 offset-lg-4 offset-2 col-xl-3 col-lg-3 col-md-5 col-sm-6 col-8"
         >
           Sign in
