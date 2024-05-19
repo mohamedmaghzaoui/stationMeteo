@@ -41,7 +41,7 @@ export const SensorForm = (props) => {
   const [formClass, setFormClass] = useState("shown");
   return (
     <div className={`overlay ${formClass}`}>
-      <form onSubmit={handleSubmit(submitData)} className="input-form ">
+      <form onSubmit={handleSubmit(submitData)} className="input-form  bg-body">
         <div className="row">
           <p className="col fs-3">Add a new module</p>
           <FontAwesomeIcon
