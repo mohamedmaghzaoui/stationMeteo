@@ -11,7 +11,11 @@ class Sensor
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+
     private ?int $id = null;
+    #[ORM\ManyToOne(targetEntity: "App\Entity\User", inversedBy: "sensors")]
+
+    private User $user;
 
     #[ORM\Column(type: "float", nullable: true)]
 
@@ -193,6 +197,24 @@ class Sensor
     public function setMacAddress($macAddress): self
     {
         $this->macAddress = $macAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of user
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set the value of user
+     */
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

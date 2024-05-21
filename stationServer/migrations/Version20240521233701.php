@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240307231828 extends AbstractMigration
+final class Version20240521233701 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,16 @@ final class Version20240307231828 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE sensor ADD pressure DOUBLE PRECISION NOT NULL, ADD humidity DOUBLE PRECISION NOT NULL, ADD altitude DOUBLE PRECISION NOT NULL, ADD air_quality INT NOT NULL, ADD time DATETIME NOT NULL, ADD temperature DOUBLE PRECISION NOT NULL');
+        $this->addSql('ALTER TABLE sensor ADD user_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE sensor ADD CONSTRAINT FK_BC8617B0A76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
+        $this->addSql('CREATE INDEX IDX_BC8617B0A76ED395 ON sensor (user_id)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE sensor DROP pressure, DROP humidity, DROP altitude, DROP air_quality, DROP time, DROP temperature');
+        $this->addSql('ALTER TABLE sensor DROP FOREIGN KEY FK_BC8617B0A76ED395');
+        $this->addSql('DROP INDEX IDX_BC8617B0A76ED395 ON sensor');
+        $this->addSql('ALTER TABLE sensor DROP user_id');
     }
 }
