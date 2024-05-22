@@ -8,6 +8,7 @@ import "../../Css/User.css";
 import axios from "axios";
 
 export const SignUp = () => {
+  const [submitError, setsubmitError] = useState("");
   //user scheam for yup validation
   const userSchema = yup.object().shape({
     name: yup.string().required("name is required"),
@@ -34,9 +35,16 @@ export const SignUp = () => {
     let url = "http://localhost:8000/users";
     console.log(userData);
     try {
+      setsubmitError(
+        <div class="spinner-grow text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>,
+      );
       const response = await axios.post(url, userData);
       console.log(response);
-    } catch (err) {}
+    } catch (err) {
+      setsubmitError(`User already exist`);
+    }
   };
   return (
     <div>
@@ -90,10 +98,9 @@ export const SignUp = () => {
           ) : (
             <br />
           )}
-        </div>
-
-        <div class="row mb-4">
-          <div class="col row d-flex justify-content-center"></div>
+          {submitError && (
+            <p className="text-center text-danger fw-bold">{submitError}</p>
+          )}
         </div>
 
         <button
