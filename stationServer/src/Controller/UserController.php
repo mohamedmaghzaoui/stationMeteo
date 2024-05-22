@@ -32,12 +32,17 @@ class UserController extends AbstractController
         return $this->json(["user doesnt not exist"]);
     }
 
-    #[Route('/users', name: "users")]
+    #[Route('/users', name: "users", methods: "Post")]
     public function addUser(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher): Response
     {
         $repository = $doctrine->getRepository(User::class);
         //get data from user
         $data = json_decode($request->getContent(), true);
+        // Check if the email already exists
+        $existingUser = $repository->findOneBy(['email' => $data['email']]);
+        if ($existingUser) {
+            return $this->json(['Email already exists'], Response::HTTP_CONFLICT);
+        }
         $user = new User($passwordHasher);
         $user->setEmail($data['email']);
         $user->setName($data['name']);
