@@ -29,6 +29,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->sensors = new ArrayCollection();
         $this->passwordHasher = $passwordHasher;
     }
+    #[Orm\Column(length: 255, unique: true)]
     private ?string $email = null;
 
 
