@@ -32,7 +32,7 @@ class UserController extends AbstractController
         return $this->json(["user doesnt not exist"]);
     }
 
-    #[Route('/users', name: "users", methods: "Post")]
+    #[Route('/users', name: "add_users", methods: "Post")]
     public function addUser(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher): Response
     {
         $repository = $doctrine->getRepository(User::class);
@@ -53,5 +53,12 @@ class UserController extends AbstractController
         $entityManger->flush();
 
         return $this->json(['user added succesfully ']);
+    }
+    #[Route("/users", name: "get_users", methods: "Get")]
+    public function getUsers(Request $request, ManagerRegistry $doctrine): Response
+    {
+        $repository = $doctrine->getRepository(User::class);
+        $users = $repository->findAll();
+        return $this->json($users);
     }
 }
