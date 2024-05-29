@@ -10,6 +10,9 @@ import { Navbar } from "./pages/navbar";
 import { Sensor } from "./pages/Data/sensorList";
 import { Login } from "./pages/User/login";
 import { SignUp } from "./pages/User/signUp";
+import { Price } from "./pages/price";
+import { Contact } from "./pages/contact";
+import { Footer } from "./pages/footer";
 
 function App() {
   return (
@@ -22,7 +25,10 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/price" element={<Price />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );

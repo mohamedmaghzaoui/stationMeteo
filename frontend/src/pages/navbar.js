@@ -11,7 +11,6 @@ export const Navbar = () => {
     <div className="">
       <nav className="navbar navbar-expand-lg bg-body-tertiary navbar bg-primary">
         <div className="container-fluid">
-          <a className="navbar-brand">Station</a>
           <button
             className="navbar-toggler"
             type="button"
@@ -27,10 +26,19 @@ export const Navbar = () => {
             className="collapse navbar-collapse container-fluid"
             id="navbarSupportedContent"
           >
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 container-fluid">
+            <ul
+              style={{ fontSize: "17px" }}
+              className=" navbar-nav me-auto mb-2 mb-lg-0 container-fluid"
+            >
               <li className="nav-item  px-1">
-                <Link className="nav-link fw-medium " to={"/"}>
-                  Home
+                <Link className="offset nav-link fw-medium " to={"/"}>
+                  🌦️ Station Météo
+                </Link>
+              </li>
+
+              <li className="nav-item  px-1">
+                <Link className="nav-link fw-medium " to={"/price"}>
+                  Pricing
                 </Link>
               </li>
 
@@ -39,34 +47,40 @@ export const Navbar = () => {
                   Sensor
                 </Link>
               </li>
-              <li className="nav-item px-xl-1 px-lg-1">
-                <div class="dropdown">
-                  <button
-                    class="nav-link dropdown-toggle fw-medium"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Account
-                  </button>
-                  <ul class="dropdown-menu ">
-                    <li>
-                      <Link className="dropdown-item " to={"/Login"}>
-                        Login{" "}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to={"/SignUp"}>
-                        Sign Up{" "}
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li className="nav-item col-xl-1 col-lg-1 col-4">
+
+              <li className="nav-item px-xl-1 px-lg-1 ">
                 <Link className="nav-link fw-medium">API Docs</Link>
               </li>
+              <li className="nav-item px-xl-1 px-lg-1  ">
+                <Link to={"/contact"} className="nav-link fw-medium">
+                  Contact us
+                </Link>
+              </li>
+              <li className="nav-item offset-xl-4  px-xl-3 px-lg-3 ">
+                <Link
+                  style={{ fontSize: "20px" }}
+                  to={"/login"}
+                  className="nav-link fw-medium "
+                >
+                  Log in
+                </Link>
+              </li>
+              <li className="nav-item  ">
+                <Link
+                  style={{
+                    backgroundColor: "#2E51ED",
+                    color: "#fff",
+                    fontSize: "20px",
+                  }}
+                  to={"/SignUp"}
+                  className="btn   fw-bold"
+                >
+                  Sign up
+                </Link>
+              </li>
+
               {/*dropdown begin */}
-              <li className="nav-item dropdown  offset-xl-8  ">
+              <li className="nav-item dropdown  offset-1  ">
                 <a
                   className="nav-link dropdown-toggle  "
                   role="button"

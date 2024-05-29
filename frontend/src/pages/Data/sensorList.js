@@ -4,21 +4,21 @@ import { SensorHeader } from "./sensorHeader";
 import axios from "axios"; // Correct the import statement
 import { SensorForm } from "./sensorForm";
 export const Sensor = () => {
-  const url = "http://localhost:3000/sensor";
   const [sensorData, setSensorData] = useState(null);
   const [form, setForm] = useState("hidden");
+  async function fetchData() {
+    const url = "http://localhost:8000/get_sensor_data";
+    try {
+      const apiResponse = await axios.get(url);
+      setSensorData(apiResponse.data.sensorData);
+      console.log(apiResponse); // Log the response data
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
 
   useEffect(() => {
     // Use useEffect to make the API request when the component mounts
-    async function fetchData() {
-      try {
-        const apiResponse = await axios.get(url);
-        setSensorData(apiResponse.data);
-        console.log(apiResponse.data); // Log the response data
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    }
 
     fetchData(); // Call the fetchData function
   }, []); // The empty array [] ensures the effect runs once on component mount
@@ -32,7 +32,37 @@ export const Sensor = () => {
       {sensorData === null ? (
         <p>Loading...</p>
       ) : (
-        sensorData.map((value) => <p>{value.temperature}</p>)
+        <div>
+          <h1>Sensor Data</h1>
+          <table className="table w-75">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Pressure</th>
+                <th>Humidity</th>
+                <th>Altitude</th>
+                <th>Air Quality</th>
+                <th>Mac Address</th>
+                <th>Time</th>
+                <th>Temperature</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sensorData.map((sensor) => (
+                <tr key={sensor.id}>
+                  <td>{sensor.id}</td>
+                  <td>{sensor.pressure}</td>
+                  <td>{sensor.humidity}</td>
+                  <td>{sensor.altitude}</td>
+                  <td>{sensor.airQuality}</td>
+                  <td>{sensor.macAddress}</td>
+                  <td>{sensor.time}</td>
+                  <td>{sensor.temperature}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 export const SensorForm = (props) => {
+  const [company, setCompany] = useState(2); // state for company 2=> no company selected and 1=> hexagone
   const moduleSchema = yup.object().shape({
     name: yup.string().required("name is required"),
     //mac address format
@@ -41,7 +42,7 @@ export const SensorForm = (props) => {
   const [formClass, setFormClass] = useState("shown");
   return (
     <div className={`overlay ${formClass}`}>
-      <form onSubmit={handleSubmit(submitData)} className="input-form ">
+      <form onSubmit={handleSubmit(submitData)} className="input-form  bg-body">
         <div className="row">
           <p className="col fs-3">Add a new module</p>
           <FontAwesomeIcon
@@ -64,7 +65,7 @@ export const SensorForm = (props) => {
           {...register("name")}
         />
         {errors.name ? (
-          <p className="text-danger"> Name is required</p>
+          <p className="text-danger"> {errors.name.message}</p>
         ) : (
           <br />
         )}
@@ -78,22 +79,49 @@ export const SensorForm = (props) => {
           {...register("macAddress")}
         />
         {errors.macAddress ? (
-          <p className="text-danger"> mac address is not correcet </p>
+          <p className="text-danger"> {errors.macAddress.message} </p>
         ) : (
           <br />
         )}
-        <input
-          style={{
-            borderColor: errors.place && "red",
-          }}
-          placeholder="Place"
-          className="form-control"
-          type="text"
-          {...register("place")}
-        />
+
+        <select
+          onInput={(e) => setCompany(e.target.value)}
+          class="form-select"
+          aria-label="Default select example"
+        >
+          <option selected>select company</option>
+          <option value="1">Hexagone</option>
+          <option value="2">no company</option>
+        </select>
+        <br />
+        {company == 1 ? (
+          <select
+            className="form-select"
+            aria-label="Default select example"
+            defaultValue="select company"
+          >
+            <option disabled>sale1</option>
+            <option value="1">sale 2</option>
+            <option value="2">sale 3</option>
+            <option value="2">sale 4</option>
+            <option value="2">sale 5</option>
+            <option value="2">labo</option>
+            <option value="2">studio</option>
+          </select>
+        ) : (
+          <input
+            style={{
+              borderColor: errors.place && "red",
+            }}
+            placeholder="Place"
+            className="form-control"
+            type="text"
+            {...register("place")}
+          />
+        )}
 
         {errors.place ? (
-          <p className="text-danger"> place is required</p>
+          <p className="text-danger"> {errors.place.message}</p>
         ) : (
           <br />
         )}
