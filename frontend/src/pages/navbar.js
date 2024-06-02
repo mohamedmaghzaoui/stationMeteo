@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import "../Css/navbar.css";
 
 import { useState } from "react";
 export const Navbar = () => {
@@ -37,22 +38,25 @@ export const Navbar = () => {
               </li>
 
               <li className="nav-item  px-1">
-                <Link className="nav-link fw-medium " to={"/price"}>
+                <Link className="nav-link fw-medium link-border " to={"/price"}>
                   Pricing
                 </Link>
               </li>
 
               <li className="nav-item px-1">
-                <Link className="nav-link fw-medium" to={"/Sensor"}>
+                <Link className="nav-link fw-medium link-border" to={"/Sensor"}>
                   Sensor
                 </Link>
               </li>
 
               <li className="nav-item px-xl-1 px-lg-1 ">
-                <Link className="nav-link fw-medium">API Docs</Link>
+                <Link className="nav-link fw-medium link-border">API Docs</Link>
               </li>
               <li className="nav-item px-xl-1 px-lg-1  ">
-                <Link to={"/contact"} className="nav-link fw-medium">
+                <Link
+                  to={"/contact"}
+                  className="nav-link fw-medium link-border"
+                >
                   Contact us
                 </Link>
               </li>
@@ -60,7 +64,7 @@ export const Navbar = () => {
                 <Link
                   style={{ fontSize: "20px" }}
                   to={"/login"}
-                  className="nav-link fw-medium "
+                  className="nav-link fw-medium link-border "
                 >
                   Log in
                 </Link>

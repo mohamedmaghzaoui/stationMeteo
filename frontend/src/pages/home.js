@@ -7,7 +7,7 @@ import { faSnowflake } from "@fortawesome/free-solid-svg-icons";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import "../Css/home.css";
 import { TypeAnimation } from "react-type-animation";
-
+import { FaArrowRight } from "react-icons/fa";
 export const Home = () => {
   //dynamic text
   const texts = ["json data", "weather information", "station api"];
@@ -38,17 +38,17 @@ export const Home = () => {
           Features
         </button>
       </div>
-      <div className="container-fluid w-100 row my-5 ">
+      <div className="container-fluid w-100 row my-5 bg-body  ">
         <div className=" col-xl-5 col-lg-5 col-md-5 col-sm-10 col-12 offset-xl-2 offset-lg-1 ">
           <h2 className="display-4 col fw-bold">Best meteo Data</h2>
           <h3 className="fw-bold display-4">Query Global Weather Data</h3>
-          <p style={{ color: "#666276", font: "Noto Sans" }} className="fs-5">
+          <p style={{ color: "#828D9F", font: "Noto Sans" }} className="fs-5">
             Integrate weather into your applications with the easiest-to-use
             global weather API including historical weather data, current
             conditions, up-to-date forecasts, and historical forecast
             information.
           </p>
-          <p style={{ color: "#666276", font: "Noto Sans" }} className="fs-5">
+          <p style={{ color: "#828D9F", font: "Noto Sans" }} className="fs-5">
             With our user-friendly JSON API, accessing weather data has never
             been easier. Whether you're developing an application or seeking
             weather information for personal use, our APIs provide seamless
@@ -102,6 +102,90 @@ export const Home = () => {
           width="80%"
           height="auto"
         />
+        <span className="my-1"></span>
+      </div>
+      <div>
+        <h1 className="fw-bold text-center text-body">
+          Real Time, Forecasted, Future, Marine and Historical Weather
+        </h1>
+        <p
+          style={{ color: "#828D9F", font: "Noto Sans" }}
+          className="fs-5 text-center"
+        >
+          Free Weather Forecast in JSON and XML for commercial and
+          non-commercial use
+        </p>
+        <div className="row offset-1">
+          <div class="card border-light col-3 mx-4 shadow p-3 mb-5 bg-body roundedd ">
+            <div
+              className="w-50 rounded-pill"
+              style={{ backgroundColor: "#DEFFFE" }}
+            >
+              <span style={{}}>Minute Forecasts</span>
+            </div>
+            <div class="card-body ">
+              <h5 class="card-title fw-bold text-body">Rapid Updates</h5>
+              <p class="card-text my-3">
+                We understand the importance of having the most up-to-date
+                weather information. That's why our local weather models are
+                updated every minute
+              </p>
+
+              <span>
+                <u style={{ cursor: "pointer" }} className="fw-bolder  mx-1">
+                  Learn more about this
+                </u>
+                <FaArrowRight color="#05BDBA" />
+              </span>
+            </div>
+          </div>
+          <div class="card border-light col-3 mx-4 shadow p-3 mb-5 bg-body roundedd ">
+            <div
+              className="w-50 rounded-pill"
+              style={{ backgroundColor: "#EDF4FF" }}
+            >
+              <span style={{}}>Minute Forecasts</span>
+            </div>
+            <div class="card-body ">
+              <h5 class="card-title fw-bold text-body">Rapid Updates</h5>
+              <p class="card-text my-3">
+                We understand the importance of having the most up-to-date
+                weather information. That's why our local weather models are
+                updated every minute
+              </p>
+
+              <span>
+                <u style={{ cursor: "pointer" }} className="fw-bolder  mx-1">
+                  Learn more about this
+                </u>
+                <FaArrowRight color="#05BDBA" />
+              </span>
+            </div>
+          </div>
+          <div class="card border-light col-3 mx-4 shadow p-3 mb-5 bg-body roundedd ">
+            <div
+              className="w-50 rounded-pill"
+              style={{ backgroundColor: "#DEFFFE" }}
+            >
+              <span style={{}}>Minute Forecasts</span>
+            </div>
+            <div class="card-body ">
+              <h5 class="card-title fw-bold text-body">Rapid Updates</h5>
+              <p class="card-text my-3">
+                We understand the importance of having the most up-to-date
+                weather information. That's why our local weather models are
+                updated every minute
+              </p>
+
+              <span>
+                <u style={{ cursor: "pointer" }} className="fw-bolder  mx-1">
+                  Learn more about this
+                </u>
+                <FaArrowRight color="#05BDBA" />
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
