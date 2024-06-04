@@ -116,15 +116,17 @@ export const Home = () => {
           non-commercial use
         </p>
         <div className="row offset-1">
-          <div class="card border-light col-3 mx-4 shadow p-3 mb-5 bg-body roundedd ">
+          <div class="card border-light col-xl-3 col-lg-3 col-md-5 col-sm-8 col-10 mx-xl-4 mx-lg-4 mx-md-2 shadow p-3 mb-5 bg-body roundedd ">
             <div
               className="w-50 rounded-pill"
               style={{ backgroundColor: "#DEFFFE" }}
             >
-              <span style={{}}>Minute Forecasts</span>
+              <span className="mx-3" style={{ color: "#014847" }}>
+                Minute Forecasts
+              </span>
             </div>
             <div class="card-body ">
-              <h5 class="card-title fw-bold text-body">Rapid Updates</h5>
+              <h2 class="card-title fw-bold text-body">Rapid Updates</h2>
               <p class="card-text my-3">
                 We understand the importance of having the most up-to-date
                 weather information. That's why our local weather models are
@@ -139,15 +141,17 @@ export const Home = () => {
               </span>
             </div>
           </div>
-          <div class="card border-light col-3 mx-4 shadow p-3 mb-5 bg-body roundedd ">
+          <div class="card border-light col-xl-3 col-lg-3 col-md-5 col-sm-8 col-10 mx-xl-4 mx-lg-4 mx-md-2 shadow p-3 mb-5 bg-body roundedd ">
             <div
               className="w-50 rounded-pill"
               style={{ backgroundColor: "#EDF4FF" }}
             >
-              <span style={{}}>Minute Forecasts</span>
+              <span className="mx-3" style={{ color: "#2036A1" }}>
+                No need to pay
+              </span>
             </div>
             <div class="card-body ">
-              <h5 class="card-title fw-bold text-body">Rapid Updates</h5>
+              <h2 class="card-title fw-bold text-body">Free API</h2>
               <p class="card-text my-3">
                 We understand the importance of having the most up-to-date
                 weather information. That's why our local weather models are
@@ -162,15 +166,17 @@ export const Home = () => {
               </span>
             </div>
           </div>
-          <div class="card border-light col-3 mx-4 shadow p-3 mb-5 bg-body roundedd ">
+          <div class="card border-light  col-xl-3 col-lg-3 col-md-5  col-sm-8 col-10 mx-xl-4 mx-lg-4 mx-md-2 shadow p-3 mb-5 bg-body roundedd ">
             <div
               className="w-50 rounded-pill"
-              style={{ backgroundColor: "#DEFFFE" }}
+              style={{ backgroundColor: "#FDF5D8" }}
             >
-              <span style={{}}>Minute Forecasts</span>
+              <span className="mx-3" style={{ color: "#603408" }}>
+                User friendly
+              </span>
             </div>
             <div class="card-body ">
-              <h5 class="card-title fw-bold text-body">Rapid Updates</h5>
+              <h2 class="card-title fw-bold text-body">Easy to use</h2>
               <p class="card-text my-3">
                 We understand the importance of having the most up-to-date
                 weather information. That's why our local weather models are
