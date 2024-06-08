@@ -67,4 +67,8 @@ class SensorController extends AbstractController
 
         return $this->json(['sensorData' => $serializedSensors]);
     }
+    public function addSensorToUser(ManagerRegistry $doctrine): Response
+    {
+        return $this->json(['status' => "works fine"]);
+    }
 }
