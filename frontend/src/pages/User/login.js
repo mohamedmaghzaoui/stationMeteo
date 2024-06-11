@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../Css/Login.css";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -27,8 +28,18 @@ export const Login = () => {
   } = useForm({
     resolver: yupResolver(userSchema),
   });
-  const submitData = (userData) => {
+  const submitData = async (userData) => {
+    const url = "http://localhost:8000/login";
     console.log(userData);
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/login",
+        userData,
+      );
+      console.log(response);
+    } catch (err) {
+      console.log(err.response);
+    }
   };
   return (
     <div>

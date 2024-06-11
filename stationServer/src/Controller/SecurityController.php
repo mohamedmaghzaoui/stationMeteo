@@ -13,7 +13,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 //login user
 class SecurityController extends AbstractController
 {
-    #[Route("/login", name: "app_login", methods: ['Post'])]
+    #[Route("/login", name: "app_login")]
     public function login(#[CurrentUser] User $user): Response
     {
         if (null == $user) {

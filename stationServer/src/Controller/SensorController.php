@@ -9,7 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Psr\Log\LoggerInterface; // Import the LoggerInterface
 use App\Entity\Sensor;
+use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
 class SensorController extends AbstractController
 {
@@ -46,8 +48,14 @@ class SensorController extends AbstractController
         return $this->json(['status' => "works fine"]);
     }
     #[Route("get_sensor_data", name: "get_sensor_data")]
-    public function getSensorData(ManagerRegistry $doctrine): Response
+    public function getSensorData(ManagerRegistry $doctrine, #[CurrentUser] User $user): Response
     {
+        if (null == $user) {
+            return $this->json([
+                'invalid credentials',
+            ], Response::HTTP_UNAUTHORIZED);
+            # code...
+        }
         $repository = $doctrine->getRepository(Sensor::class);
         $sensors = $repository->findAll();
         $serializedSensors = [];

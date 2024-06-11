@@ -13,8 +13,10 @@ import { SignUp } from "./pages/User/signUp";
 import { Price } from "./pages/price";
 import { Contact } from "./pages/contact";
 import { Footer } from "./pages/footer";
+import axios from "axios";
 
 function App() {
+  axios.defaults.withCredentials = true;
   return (
     <div className="container-fluid">
       <Router>
