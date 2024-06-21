@@ -13,25 +13,28 @@ import { SignUp } from "./pages/User/signUp";
 import { Price } from "./pages/price";
 import { Contact } from "./pages/contact";
 import { Footer } from "./pages/footer";
+import { UserProvider } from "./contexts/userContext";
 import axios from "axios";
 
 function App() {
   axios.defaults.withCredentials = true;
   return (
     <div className="container-fluid">
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/sensor" element={<Sensor />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/price" element={<Price />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <Footer />
-      </Router>
+      <UserProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/sensor" element={<Sensor />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/price" element={<Price />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </UserProvider>
     </div>
   );
 }

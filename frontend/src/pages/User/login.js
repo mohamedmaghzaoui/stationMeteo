@@ -2,14 +2,17 @@ import { Link } from "react-router-dom";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../Css/Login.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { UserContext } from "../../contexts/userContext";
 
 export const Login = () => {
+  //username context
+  const { setUsername } = useContext(UserContext);
   //login schema
   const userSchema = yup.object().shape({
     email: yup.string().required("Email is required"),
@@ -37,6 +40,7 @@ export const Login = () => {
         userData,
       );
       console.log(response);
+      setUsername("a");
     } catch (err) {
       console.log(err.response);
     }

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
 class UserController extends AbstractController
 {
@@ -60,5 +61,27 @@ class UserController extends AbstractController
         $repository = $doctrine->getRepository(User::class);
         $users = $repository->findAll();
         return $this->json($users);
+    }
+
+    #[Route("/user", name: "get_user", methods: "GET")]
+    public function getUserData(#[CurrentUser] User $user): JsonResponse
+    {
+        if (null == $user) {
+            return $this->json([
+                'invalid credentials',
+            ], Response::HTTP_UNAUTHORIZED);
+            # code...
+        }
+
+        // Serialize user data to send back in the response
+        $userData = [
+            'id' => $user->getId(),
+            'email' => $user->getEmail(),
+            'name' => $user->getName(),
+            'roles' => $user->getRoles(), // Assuming roles are stored as an array
+            // Include any other relevant user information
+        ];
+
+        return $this->json($userData);
     }
 }
