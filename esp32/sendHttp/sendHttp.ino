@@ -115,7 +115,7 @@ void loop() {
 
   // Make HTTP POST request
   HTTPClient http;
-  const char *serverUrl = "http://192.168.1.68:8000/sensor";
+  const char *serverUrl = "http://192.168.1.41:8000/sensor";
   http.begin(serverUrl);
   http.addHeader("Content-Type", "application/json");
   int httpResponseCode = http.POST(jsonString);

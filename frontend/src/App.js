@@ -6,7 +6,7 @@ import "./Css/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/home";
 import { NotFound } from "./pages/notFound";
-import { Navbar } from "./pages/navbar";
+import { Navbar } from "./pages/Navbar/navbar";
 import { Sensor } from "./pages/Data/sensorList";
 import { Login } from "./pages/User/login";
 import { SignUp } from "./pages/User/signUp";

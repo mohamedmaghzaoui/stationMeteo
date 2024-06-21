@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
-import "../Css/navbar.css";
+import "../../Css/navbar.css";
 
 import { useState } from "react";
-export const Navbar = () => {
+export const NewNavbar = () => {
   const [theme, setTheme] = useState("light");
   return (
     <div className="">
