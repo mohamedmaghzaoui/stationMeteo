@@ -1,9 +1,11 @@
+//diffrent libraries
 import { Link } from "react-router-dom";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../Css/Login.css";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import * as yup from "yup";
@@ -11,6 +13,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { UserContext } from "../../contexts/userContext";
 
 export const Login = () => {
+  const navigate = useNavigate();
   //username context
   const { setUsername } = useContext(UserContext);
   //login schema
@@ -23,6 +26,7 @@ export const Login = () => {
   });
   //state for show password icon and change type
   const [showPassword, setShowPassword] = useState(false);
+  const [loginError, setLoginError] = useState("");
   //use use form for data managment
   const {
     handleSubmit,
@@ -35,14 +39,21 @@ export const Login = () => {
     const url = "http://localhost:8000/login";
     console.log(userData);
     try {
+      setLoginError(
+        <div class="spinner-grow text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>,
+      );
       const response = await axios.post(
         "http://localhost:8000/login",
         userData,
       );
       console.log(response);
-      setUsername("a");
+      setUsername((prev) => prev + "a"); //change username to re render component and request name for symfony server
+      navigate("/");
     } catch (err) {
       console.log(err.response);
+      setLoginError("Incorrect email or password");
     }
   };
   return (
@@ -95,6 +106,9 @@ export const Login = () => {
             <span className="text-danger"> {errors.password.message} </span>
           ) : (
             <p />
+          )}
+          {loginError && (
+            <p className="text-center text-danger fw-bold">{loginError}</p>
           )}
         </div>
 

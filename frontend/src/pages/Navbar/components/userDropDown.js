@@ -1,6 +1,11 @@
 import { FaUser } from "react-icons/fa";
 import axios from "axios";
+import { useContext } from "react";
+import { UserContext } from "../../../contexts/userContext";
+import { useNavigate } from "react-router-dom";
 export const UserDropDown = () => {
+  const { username, setUsername } = useContext(UserContext);
+  const navigate = useNavigate();
   const Logout = async () => {
     let url = "http://localhost:8000/logout";
     try {
@@ -8,6 +13,9 @@ export const UserDropDown = () => {
       console.log(response);
     } catch (err) {
       console.log(err);
+
+      setUsername((prev) => prev + "a"); //change username to re render component and request name for symfony server
+      navigate("/");
     }
   };
   return (
@@ -21,6 +29,14 @@ export const UserDropDown = () => {
         <FaUser size={23} />
       </a>
       <ul className="dropdown-menu">
+        {username && (
+          <li>
+            <a className="dropdown-item bg-dark-subtle">
+              <span className="mx-1 text-body-emphasis">{username}</span>
+            </a>
+          </li>
+        )}
+
         <li>
           <a className="dropdown-item">
             <span className="mx-1">Profile</span>
@@ -32,11 +48,11 @@ export const UserDropDown = () => {
           </a>
         </li>
         <li>
-          <a className="dropdown-item">
+          <span className="dropdown-item">
             <span onClick={() => Logout()} className="mx-1 text-danger fw-bold">
               Logout
             </span>
-          </a>
+          </span>
         </li>
       </ul>
     </li>

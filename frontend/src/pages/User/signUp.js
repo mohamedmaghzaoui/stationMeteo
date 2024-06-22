@@ -80,6 +80,7 @@ export const SignUp = () => {
             type="password"
             class="form-control"
           />
+          {/* handel diffrent errors */}
           {errors.password ? (
             <p className="text-danger"> {errors.password.message} </p>
           ) : (
