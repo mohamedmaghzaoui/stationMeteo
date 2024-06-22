@@ -6,6 +6,7 @@ import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import "../../Css/navbar.css";
 
 import { useState } from "react";
+import { ModeDropDown } from "./components/modeDropdown";
 export const NewNavbar = () => {
   const [theme, setTheme] = useState("light");
   return (
@@ -31,36 +32,39 @@ export const NewNavbar = () => {
               style={{ fontSize: "17px" }}
               className=" navbar-nav me-auto mb-2 mb-lg-0 container-fluid"
             >
-              <li className="nav-item  px-1">
-                <Link className="offset nav-link fw-medium " to={"/"}>
-                  🌦️ Station Météo
+              <li className="nav-item  col-1  ">
+                <Link className=" nav-link fw-medium link-border  " to={"/"}>
+                  🌦️ Station
                 </Link>
               </li>
 
-              <li className="nav-item  px-1">
-                <Link className="nav-link fw-medium link-border " to={"/price"}>
-                  Pricing
+              <li className="nav-item col-1 ">
+                <Link
+                  className="nav-link fw-medium link-border   "
+                  to={"/price"}
+                >
+                  💲 Pricing
                 </Link>
               </li>
 
-              <li className="nav-item px-1">
+              <li className="nav-item px-1 col-1">
                 <Link className="nav-link fw-medium link-border" to={"/Sensor"}>
-                  Sensor
+                  📡 Sensor
                 </Link>
               </li>
 
-              <li className="nav-item px-xl-1 px-lg-1 ">
-                <Link className="nav-link fw-medium link-border">API Docs</Link>
+              <li className="nav-item px-xl-1 px-lg-1 col-1">
+                <Link className="nav-link fw-medium link-border">📄 API</Link>
               </li>
-              <li className="nav-item px-xl-1 px-lg-1  ">
+              <li className="nav-item px-xl-1 px-lg-1 col-1 ">
                 <Link
                   to={"/contact"}
                   className="nav-link fw-medium link-border"
                 >
-                  Contact us
+                  📧 Contact
                 </Link>
               </li>
-              <li className="nav-item offset-xl-4  px-xl-3 px-lg-3 ">
+              <li className="nav-item offset-xl-3  px-xl-3 px-lg-3 ">
                 <Link
                   style={{ fontSize: "20px" }}
                   to={"/login"}
@@ -84,63 +88,7 @@ export const NewNavbar = () => {
               </li>
 
               {/*dropdown begin */}
-              <li className="nav-item dropdown  offset-1  ">
-                <a
-                  className="nav-link dropdown-toggle  "
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  {theme == "light" ? (
-                    <FontAwesomeIcon
-                      icon={faSun}
-                      className="fs-3"
-                    ></FontAwesomeIcon>
-                  ) : (
-                    <FontAwesomeIcon
-                      icon={faMoon}
-                      className="fs-3"
-                    ></FontAwesomeIcon>
-                  )}
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a
-                      onClick={() => {
-                        setTheme("light");
-                        document
-                          .querySelector("body")
-                          .setAttribute("data-bs-theme", "light");
-                        document.querySelector("body").style.backgroundColor =
-                          "#f5f5f5";
-                      }}
-                      className="dropdown-item"
-                    >
-                      <FontAwesomeIcon cl icon={faSun} size="1x" />{" "}
-                      <span className="mx-1">Light</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      onClick={() => {
-                        setTheme("dark");
-                        document
-                          .querySelector("body")
-                          .setAttribute("data-bs-theme", "dark");
-                        document.querySelector("body").style.backgroundColor =
-                          "#343a40";
-                      }}
-                      className="dropdown-item  "
-                    >
-                      <FontAwesomeIcon
-                        icon={faMoon}
-                        size="1x"
-                      ></FontAwesomeIcon>{" "}
-                      <span className="mx-1">Dark</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <ModeDropDown />
             </ul>
           </div>
         </div>

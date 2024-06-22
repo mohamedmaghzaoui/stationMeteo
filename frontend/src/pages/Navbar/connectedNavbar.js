@@ -35,36 +35,39 @@ export const ConnectedNavbar = () => {
               style={{ fontSize: "17px" }}
               className=" navbar-nav me-auto mb-2 mb-lg-0 container-fluid"
             >
-              <li className="nav-item  px-1">
-                <Link className="offset nav-link fw-medium " to={"/"}>
-                  🌦️ Station Météo
+              <li className="nav-item  col-1  ">
+                <Link className=" nav-link fw-medium link-border  " to={"/"}>
+                  🌦️ Station
                 </Link>
               </li>
 
-              <li className="nav-item  px-1">
-                <Link className="nav-link fw-medium link-border " to={"/price"}>
-                  Pricing
+              <li className="nav-item col-1 ">
+                <Link
+                  className="nav-link fw-medium link-border   "
+                  to={"/price"}
+                >
+                  💲 Pricing
                 </Link>
               </li>
 
-              <li className="nav-item px-1">
+              <li className="nav-item px-1 col-1">
                 <Link className="nav-link fw-medium link-border" to={"/Sensor"}>
-                  Sensor
+                  📡 Sensor
                 </Link>
               </li>
 
-              <li className="nav-item px-xl-1 px-lg-1 ">
-                <Link className="nav-link fw-medium link-border">API Docs</Link>
+              <li className="nav-item px-xl-1 px-lg-1 col-1">
+                <Link className="nav-link fw-medium link-border">📄 API</Link>
               </li>
-              <li className="nav-item px-xl-1 px-lg-1  ">
+              <li className="nav-item px-xl-1 px-lg-1 col-1 ">
                 <Link
                   to={"/contact"}
                   className="nav-link fw-medium link-border"
                 >
-                  Contact us
+                  📧 Contact
                 </Link>
               </li>
-              <li className="nav-item offset-xl-4  px-xl-3 px-lg-3 "></li>
+              <li className="nav-item offset-xl-3  px-xl-3 px-lg-3 "></li>
 
               {/* User dropdown */}
               <UserDropDown />
