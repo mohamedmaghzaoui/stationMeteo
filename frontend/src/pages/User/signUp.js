@@ -3,12 +3,16 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../Css/User.css";
 import axios from "axios";
+import { UserContext } from "../../contexts/userContext";
 
 export const SignUp = () => {
+  const navigate = useNavigate();
   const [submitError, setsubmitError] = useState("");
+  const { setUsername } = useContext(UserContext);
   //user scheam for yup validation
   const userSchema = yup.object().shape({
     name: yup.string().required("name is required"),
@@ -33,15 +37,25 @@ export const SignUp = () => {
   //send data to symfony server
   const submitData = async (userData) => {
     let url = "http://localhost:8000/users";
+    let loginUrl = "http://localhost:8000/login";
     console.log(userData);
+
     try {
       setsubmitError(
         <div class="spinner-grow text-success" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>,
       );
-      const response = await axios.post(url, userData);
-      console.log(response);
+      const response1 = await axios.post(url, userData);
+      console.log(response1);
+      const userAuthentication = {
+        email: userData.email,
+        password: userData.password,
+      };
+      const response2 = await axios.post(loginUrl, userAuthentication);
+      console.log(response2);
+      setUsername((prev) => prev + "a"); //change username to re rernder
+      navigate("/");
     } catch (err) {
       setsubmitError(`User already exist`);
     }
