@@ -1,5 +1,15 @@
 import { FaUser } from "react-icons/fa";
+import axios from "axios";
 export const UserDropDown = () => {
+  const Logout = async () => {
+    let url = "http://localhost:8000/logout";
+    try {
+      const response = await axios.post(url);
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <li className="nav-item dropdown  offset-1  ">
       <a
@@ -23,7 +33,9 @@ export const UserDropDown = () => {
         </li>
         <li>
           <a className="dropdown-item">
-            <span className="mx-1 text-danger fw-bold">Logout</span>
+            <span onClick={() => Logout()} className="mx-1 text-danger fw-bold">
+              Logout
+            </span>
           </a>
         </li>
       </ul>
