@@ -7,7 +7,7 @@ export const Sensor = () => {
   const [sensorData, setSensorData] = useState(null);
   const [form, setForm] = useState("hidden");
   async function fetchData() {
-    const url = "http://localhost:8000/get_sensor_data";
+    const url = "http://localhost:8000/sensors";
     try {
       const apiResponse = await axios.get(url);
       setSensorData(apiResponse.data.sensorData);
@@ -37,7 +37,7 @@ export const Sensor = () => {
           <table className="table w-75">
             <thead>
               <tr>
-                <th>ID</th>
+                <th>Id</th>
                 <th>Pressure</th>
                 <th>Humidity</th>
                 <th>Altitude</th>

@@ -48,9 +48,9 @@ class SensorController extends AbstractController
         $sensorData->setAltitude($jsonData['altitude'] ?? null);
         $sensorData->setAirQuality($jsonData['airQuality'] ?? null);
 
-        // Check if 'time' key exists before trying to access it
-        $dateTime = isset($jsonData['time']) ? new \DateTime($jsonData['time']) : null;
-        $sensorData->setTime($dateTime);
+
+        $currentTime = new \DateTime();
+        $sensorData->setTime($currentTime);
 
         $sensorData->setTemperature($jsonData['temperature'] ?? null);
 
