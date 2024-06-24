@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Sensor;
 use App\Entity\User;
+
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
@@ -50,6 +51,7 @@ class SensorController extends AbstractController
 
 
         $currentTime = new \DateTime();
+        $currentTime->modify('+2 hours');
         $sensorData->setTime($currentTime);
 
         $sensorData->setTemperature($jsonData['temperature'] ?? null);
