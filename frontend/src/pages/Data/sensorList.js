@@ -4,13 +4,19 @@ import { TiWeatherCloudy } from "react-icons/ti";
 import { FaDatabase, FaMapMarkerAlt } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { TypeAnimation } from "react-type-animation";
+import { BsDatabaseFillAdd } from "react-icons/bs";
 import axios from "axios";
 import { SensorForm } from "./sensorForm";
 import { Link } from "react-router-dom";
+import { SensorPosition } from "./sensorPosition";
+
+
+
 
 export const Sensor = () => {
   const [sensorData, setSensorData] = useState(null);
   const [form, setForm] = useState("hidden");
+  const [schoolCard, setShcoolCard] = useState("hidden");
   const [actionStatus, setActionStatus] = useState("idle"); // State for action status
 
   const wait = (
@@ -40,10 +46,6 @@ export const Sensor = () => {
     </div>
   );
 
-  useEffect(() => {
-    fetchData(); // Initial fetch on component mount
-  }, []);
-
   async function fetchData() {
     setActionStatus("loading"); // Set action status to loading
     const url = "http://localhost:8000/user/sensors";
@@ -57,6 +59,9 @@ export const Sensor = () => {
       setActionStatus("idle"); // Reset action status to idle
     }
   }
+  useEffect(() => {
+    fetchData(); // Initial fetch on component mount
+  }, []);
 
   async function unlinkSensor(macAddress) {
     setActionStatus("deleting"); // Set action status to deleting
@@ -77,6 +82,8 @@ export const Sensor = () => {
   return (
     <div>
       <SensorHeader fetchData={fetchData} setForm={setForm} />
+      {console.log("card",schoolCard)}
+      {schoolCard === "shown" && <SensorPosition setShcoolCard={setShcoolCard}  />}
 
       {form === "shown" && <SensorForm setForm={setForm} />}
 
@@ -121,9 +128,12 @@ export const Sensor = () => {
                       to={`/sensorDetails/all/${group.macAddress}/${group.name}`}
                       className="btn btn-outline-info col-5"
                     >
-                      <FaDatabase /> All data
+                      <BsDatabaseFillAdd /> All data
                     </Link>
-                    <Link className="btn btn-outline-success col-5 my-2 mx-3 p">
+                    <Link
+                      onClick={() => setShcoolCard("shown")}
+                      className="btn btn-outline-success col-5 my-2 mx-3 p"
+                    >
                       <FaMapMarkerAlt /> View place
                     </Link>
                     <button

@@ -120,12 +120,14 @@ export const SensorForm = (props) => {
             <option value="sale 1" selected>
               sale 1
             </option>
-            <option value="sale 2">sale 2</option>
-            <option value="sale 3">sale 3</option>
-            <option value="sale 4">sale 4</option>
-            <option value="sale 5">sale 5</option>
-            <option value="labo">labo</option>
-            <option value="studio">studio</option>
+            <option value="salle 2">salle 2</option>
+            <option value="salle 3">salle 3</option>
+            <option value="salle 4">salle 4</option>
+            <option value="salle 5">salle 5</option>
+            <option value="salle 6">salle 6</option>
+            <option value="salle de reunion">salle de reunion</option>
+            <option value="impression 3d">impression 3d</option>
+            <option value="salle video">salle video</option>
           </select>
         ) : (
           <input
