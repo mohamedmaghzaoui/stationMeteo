@@ -35,7 +35,7 @@ function App() {
             <Route path="/price" element={<Price />} />
             <Route path="/contact" element={<Contact />} />
             <Route
-              path="/sensorDetails/:macAddress/:name"
+              path="/sensorDetails/last/:macAddress/:name"
               element={<SensorDetails />}
             />
           </Routes>

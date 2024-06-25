@@ -8,7 +8,7 @@ export const SensorDetails = () => {
 
   useEffect(() => {
     async function fetchSensorDetails() {
-      const url = `http://localhost:8000/sensors/details?macAddress=${macAddress}&name=${name}`;
+      const url = `http://localhost:8000/sensors/details/last?macAddress=${macAddress}&name=${name}`;
       try {
         const apiResponse = await axios.get(url);
         setSensor(apiResponse.data);

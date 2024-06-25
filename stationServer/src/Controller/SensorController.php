@@ -160,7 +160,7 @@ class SensorController extends AbstractController
 
 
     //unlick user to sensor data
-    #[Route('/sensors/delete', name: 'unlink_sensors_from_user', methods: ['PUT'])]
+    #[Route('/sensors/delete', name: 'unlink_sensors_from_user', methods: ['DELETE'])]
     public function unlinkSensorsFromUser(Request $request, ManagerRegistry $doctrine, #[CurrentUser] User $user): Response
     {
         //check if user is connected
@@ -191,15 +191,11 @@ class SensorController extends AbstractController
 
         // Unlink the user from all found sensors and check that 
         foreach ($sensors as $sensor) {
-            if ($sensor->getUser() != null) {
-                $sensor->setUser(null);
-                $sensor->setPlace(null);
-                $entityManager->persist($sensor);
-            } else {
-                return $this->json(['error' => 'sensor already not linked'], Response::HTTP_NOT_FOUND);
-            }
-        }
 
+            $sensor->setUser(null);
+            $sensor->setPlace(null);
+            $entityManager->persist($sensor);
+        }
         $entityManager->flush();
 
         return $this->json(['message' => 'User unlinked from all sensors successfully']);
@@ -241,8 +237,10 @@ class SensorController extends AbstractController
 
         return $this->json(['sensorData' => array_values($groupedSensors)]);
     }
-    #[Route("/sensors/details", name: "sensor_details")]
-    public function getSensorDetails(Request $request, ManagerRegistry $doctrine, #[CurrentUser] User $user): Response
+
+
+    #[Route("/sensors/details/last", name: "sensor_details_last")]
+    public function getLastSensorDetails(Request $request, ManagerRegistry $doctrine, #[CurrentUser] User $user): Response
     {
         if (null == $user) {
             return $this->json([
