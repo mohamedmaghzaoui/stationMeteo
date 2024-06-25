@@ -166,7 +166,7 @@ export const Home = () => {
               </span>
             </div>
           </div>
-          <div class="card border-light  col-xl-3 col-lg-3 col-md-5  col-sm-8 col-10 mx-xl-4 mx-lg-4 mx-md-2 shadow p-3 mb-5 bg-body roundedd ">
+          <div class="card border-light  col-xl-3 col-lg-3 col-md-5  col-sm-8 col-10 mx-xl-4 mx-lg-4 mx-md-2 shadow p-3 mb-5 bg-body rounded ">
             <div
               className="w-50 rounded-pill"
               style={{ backgroundColor: "#FDF5D8" }}

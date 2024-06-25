@@ -143,9 +143,13 @@ class SensorController extends AbstractController
 
         // Update all sensors with the same macAddress
         foreach ($sensors as $sensor) {
-            $sensor->setUser($user);
-            $sensor->setPlace($place);
-            $entityManager->persist($sensor);
+            if ($sensor->getUser() == null) {
+                $sensor->setUser($user);
+                $sensor->setPlace($place);
+                $entityManager->persist($sensor);
+            } else {
+                return $this->json(['error' => 'sensor already linked'], Response::HTTP_NOT_FOUND);
+            }
         }
 
         $entityManager->flush();
@@ -185,15 +189,107 @@ class SensorController extends AbstractController
             return $this->json(['error' => 'No sensors found with the provided macAddress'], Response::HTTP_NOT_FOUND);
         }
 
-        // Unlink the user from all found sensors
+        // Unlink the user from all found sensors and check that 
         foreach ($sensors as $sensor) {
-            $sensor->setUser(null);
-            $sensor->setPlace(null);
-            $entityManager->persist($sensor);
+            if ($sensor->getUser() != null) {
+                $sensor->setUser(null);
+                $sensor->setPlace(null);
+                $entityManager->persist($sensor);
+            } else {
+                return $this->json(['error' => 'sensor already not linked'], Response::HTTP_NOT_FOUND);
+            }
         }
 
         $entityManager->flush();
 
         return $this->json(['message' => 'User unlinked from all sensors successfully']);
+    }
+    #[Route("/user/sensors", name: "user_sensors", methods: ["GET"])]
+    public function getUserSensors(ManagerRegistry $doctrine, #[CurrentUser] User $user): Response
+    {
+        if (null == $user) {
+            return $this->json([
+                'error' => 'Invalid credentials',
+            ], Response::HTTP_UNAUTHORIZED);
+        }
+
+        $sensorRepository = $doctrine->getRepository(Sensor::class);
+        $userSensors = $sensorRepository->findBy(['user' => $user]);
+
+        $groupedSensors = [];
+        foreach ($userSensors as $sensor) {
+            $key = $sensor->getMacAddress() . '_' . $sensor->getName();
+            if (!isset($groupedSensors[$key])) {
+                $groupedSensors[$key] = [
+                    'macAddress' => $sensor->getMacAddress(),
+                    'name' => $sensor->getName(),
+                    'place' => $sensor->getPlace(),
+                    'sensors' => []
+                ];
+            }
+            $groupedSensors[$key]['sensors'][] = [
+                'id' => $sensor->getId(),
+                'pressure' => $sensor->getPressure(),
+                'humidity' => $sensor->getHumidity(),
+                'altitude' => $sensor->getAltitude(),
+                'airQuality' => $sensor->getAirQuality(),
+                'time' => $sensor->getTime() ? $sensor->getTime()->format('Y-m-d H:i:s') : null,
+                'temperature' => $sensor->getTemperature(),
+
+            ];
+        }
+
+        return $this->json(['sensorData' => array_values($groupedSensors)]);
+    }
+    #[Route("/sensors/details", name: "sensor_details")]
+    public function getSensorDetails(Request $request, ManagerRegistry $doctrine, #[CurrentUser] User $user): Response
+    {
+        if (null == $user) {
+            return $this->json([
+                'error' => 'Invalid credentials',
+            ], Response::HTTP_UNAUTHORIZED);
+        }
+        $macAddress = $request->query->get('macAddress');
+        $name = $request->query->get('name');
+
+        if (!$macAddress || !$name) {
+            return $this->json(['error' => 'Missing macAddress or name'], Response::HTTP_BAD_REQUEST);
+        }
+
+        // Get the current user
+        $currentUser = $this->getUser();
+
+        // Retrieve the sensor from the database
+        $sensorRepository = $doctrine->getRepository(Sensor::class);
+        $sensor = $sensorRepository->findOneBy(
+            ['macAddress' => $macAddress, 'name' => $name],
+            ['time' => 'DESC'] // Sort by time in descending order to get the latest record
+        );;
+
+        // If sensor not found, return 404 Not Found
+        if (!$sensor) {
+            return $this->json(['error' => 'Sensor not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        // Check if the current user is authorized to access this sensor
+        if ($sensor->getUser() !== $currentUser) {
+            return $this->json([
+                'error' => 'unothorized',
+            ], Response::HTTP_UNAUTHORIZED);
+        }
+
+        // Serialize sensor data for response
+        $sensorData = [
+
+            'pressure' => $sensor->getPressure(),
+            'humidity' => $sensor->getHumidity(),
+            'altitude' => $sensor->getAltitude(),
+            'airQuality' => $sensor->getAirQuality(),
+            'temperature' => $sensor->getTemperature(),
+            'time' => $sensor->getTime() ? $sensor->getTime()->format('Y-m-d H:i:s') : null,
+            // Add more fields as needed
+        ];
+
+        return $this->json($sensorData);
     }
 }

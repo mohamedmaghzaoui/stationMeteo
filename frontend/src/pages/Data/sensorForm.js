@@ -3,10 +3,12 @@ import "../../Css/sensorForm.css";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 export const SensorForm = (props) => {
+  const [apiError, setApiError] = useState("");
   const [company, setCompany] = useState(2); // state for company 2=> no company selected and 1=> hexagone
   const moduleSchema = yup.object().shape({
     name: yup.string().required("name is required"),
@@ -35,9 +37,22 @@ export const SensorForm = (props) => {
   };
   //yup schema for cliend validation
 
-  //function to submitting data
-  const submitData = (data) => {
-    console.log(data);
+  //function to send data to symfony server
+  const submitData = async (sensorData) => {
+    try {
+      let url = "http://localhost:8000/sensors/add";
+      setApiError(
+        <div class="spinner-grow text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>,
+      );
+      const response = await axios.post(url, sensorData);
+      console.log(response);
+      exitForm();
+    } catch (err) {
+      console.log(err);
+      setApiError("invalid module");
+    }
   };
   const [formClass, setFormClass] = useState("shown");
   return (
@@ -91,22 +106,25 @@ export const SensorForm = (props) => {
         >
           <option selected>select company</option>
           <option value="1">Hexagone</option>
-          <option value="2">no company</option>
+          <option value="2">other company</option>
         </select>
         <br />
         {company == 1 ? (
           <select
+            {...register("place")}
             className="form-select"
             aria-label="Default select example"
-            defaultValue="select company"
+            defaultValue="sale 1" // Set the default value here
           >
-            <option disabled>sale1</option>
-            <option value="1">sale 2</option>
-            <option value="2">sale 3</option>
-            <option value="2">sale 4</option>
-            <option value="2">sale 5</option>
-            <option value="2">labo</option>
-            <option value="2">studio</option>
+            <option value="sale 1" selected>
+              sale 1
+            </option>
+            <option value="sale 2">sale 2</option>
+            <option value="sale 3">sale 3</option>
+            <option value="sale 4">sale 4</option>
+            <option value="sale 5">sale 5</option>
+            <option value="labo">labo</option>
+            <option value="studio">studio</option>
           </select>
         ) : (
           <input
@@ -124,6 +142,9 @@ export const SensorForm = (props) => {
           <p className="text-danger"> {errors.place.message}</p>
         ) : (
           <br />
+        )}
+        {apiError && (
+          <p className="text-center text-danger fw-bold">{apiError}</p>
         )}
         <button type="submit" className="btn btn-primary col-2 mx-1">
           Add
