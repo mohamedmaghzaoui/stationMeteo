@@ -220,19 +220,9 @@ class SensorController extends AbstractController
                     'macAddress' => $sensor->getMacAddress(),
                     'name' => $sensor->getName(),
                     'place' => $sensor->getPlace(),
-                    'sensors' => []
+
                 ];
             }
-            $groupedSensors[$key]['sensors'][] = [
-                'id' => $sensor->getId(),
-                'pressure' => $sensor->getPressure(),
-                'humidity' => $sensor->getHumidity(),
-                'altitude' => $sensor->getAltitude(),
-                'airQuality' => $sensor->getAirQuality(),
-                'time' => $sensor->getTime() ? $sensor->getTime()->format('Y-m-d H:i:s') : null,
-                'temperature' => $sensor->getTemperature(),
-
-            ];
         }
 
         return $this->json(['sensorData' => array_values($groupedSensors)]);
@@ -289,5 +279,55 @@ class SensorController extends AbstractController
         ];
 
         return $this->json($sensorData);
+    }
+
+
+    #[Route("/sensors/details/all", name: "sensor_details_all")]
+    public function getAllSensorDetails(Request $request, ManagerRegistry $doctrine, #[CurrentUser] User $user): Response
+    {
+        $macAddress = $request->query->get('macAddress');
+        $name = $request->query->get('name');
+        if (null == $user) {
+            return $this->json([
+                'error' => 'Invalid credentials',
+            ], Response::HTTP_UNAUTHORIZED);
+        }
+
+        // Retrieve the sensor repository
+        $sensorRepository = $doctrine->getRepository(Sensor::class);
+
+        // Retrieve all sensors belonging to the current user
+        $userSensors = $sensorRepository->findBy(
+            ['user' => $user, 'macAddress' => $macAddress],
+            ['time' => 'DESC']
+        );
+
+        // If no sensors found for the user, return an appropriate response
+        if (empty($userSensors)) {
+            return $this->json(['message' => 'No sensors found for the user'], Response::HTTP_NOT_FOUND);
+        }
+
+        // Initialize an array to store all sensor details
+        $sensorDetails = [];
+
+        // Iterate through each sensor to extract details
+        foreach ($userSensors as $sensor) {
+            $sensorData = [
+
+                'pressure' => $sensor->getPressure(),
+                'humidity' => $sensor->getHumidity(),
+                'altitude' => $sensor->getAltitude(),
+                'airQuality' => $sensor->getAirQuality(),
+                'temperature' => $sensor->getTemperature(),
+                'time' => $sensor->getTime() ? $sensor->getTime()->format('Y-m-d H:i:s') : null,
+                // Add more fields as needed
+            ];
+
+            // Push sensor data into the sensorDetails array
+            $sensorDetails[] = $sensorData;
+        }
+
+        // Return JSON response with all sensor details
+        return $this->json(['sensorDetails' => $sensorDetails]);
     }
 }

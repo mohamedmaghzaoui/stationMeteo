@@ -118,7 +118,7 @@ export const Sensor = () => {
                       <FaDatabase /> Last Data
                     </Link>
                     <Link
-                      to={`/sensorDetails/last/${group.macAddress}/${group.name}`}
+                      to={`/sensorDetails/all/${group.macAddress}/${group.name}`}
                       className="btn btn-outline-info col-5"
                     >
                       <FaDatabase /> All data

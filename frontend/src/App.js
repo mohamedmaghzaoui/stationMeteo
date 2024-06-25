@@ -5,7 +5,7 @@ import "./Css/App.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/home";
-import {} from "./pages/Data/sensorDetails";
+
 import { NotFound } from "./pages/notFound";
 import { Navbar } from "./pages/Navbar/navbar";
 import { Sensor } from "./pages/Data/sensorList";
@@ -15,6 +15,7 @@ import { Price } from "./pages/price";
 import { Contact } from "./pages/contact";
 import { Footer } from "./pages/footer";
 import { UserProvider } from "./contexts/userContext";
+import { LastSensorDetails } from "./pages/Data/lastSensorDetails";
 import { SensorDetails } from "./pages/Data/sensorDetails";
 
 import axios from "axios";
@@ -36,6 +37,10 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route
               path="/sensorDetails/last/:macAddress/:name"
+              element={<LastSensorDetails />}
+            />
+            <Route
+              path="/sensorDetails/all/:macAddress/:name"
               element={<SensorDetails />}
             />
           </Routes>
