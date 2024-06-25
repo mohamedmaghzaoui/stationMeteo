@@ -49,6 +49,7 @@ export const SensorForm = (props) => {
       const response = await axios.post(url, sensorData);
       console.log(response);
       exitForm();
+      window.location.reload();
     } catch (err) {
       console.log(err);
       setApiError("invalid module");

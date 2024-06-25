@@ -1,85 +1,107 @@
-import { useEffect } from "react"; // Import React and useEffect
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SensorHeader } from "./sensorHeader";
 import { TiWeatherCloudy } from "react-icons/ti";
-import { FaEye, FaEdit, FaDatabase, FaMapMarkerAlt } from "react-icons/fa";
+import { FaDatabase, FaMapMarkerAlt } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
-import axios from "axios"; // Correct the import statement
+import { TypeAnimation } from "react-type-animation";
+import axios from "axios";
 import { SensorForm } from "./sensorForm";
 import { Link } from "react-router-dom";
+
 export const Sensor = () => {
   const [sensorData, setSensorData] = useState(null);
   const [form, setForm] = useState("hidden");
-  const [apiTime, setApiTime] = useState(false);
+  const [actionStatus, setActionStatus] = useState("idle"); // State for action status
+
+  const wait = (
+    <div className="text-center ">
+      <div
+        style={{ width: "5rem", height: "5rem" }}
+        class="spinner-grow text-primary"
+        role="status"
+      >
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div
+        style={{ width: "5rem", height: "5rem" }}
+        class="spinner-grow text-primary"
+        role="status"
+      >
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div
+        style={{ width: "5rem", height: "5rem" }}
+        class="spinner-grow text-primary"
+        role="status"
+      >
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      ,
+    </div>
+  );
+
+  useEffect(() => {
+    fetchData(); // Initial fetch on component mount
+  }, []);
+
   async function fetchData() {
+    setActionStatus("loading"); // Set action status to loading
     const url = "http://localhost:8000/user/sensors";
     try {
       const apiResponse = await axios.get(url);
       setSensorData(apiResponse.data.sensorData);
-      console.log(apiResponse); // Log the response data
+      console.log(apiResponse.data); // Log the response data
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setActionStatus("idle"); // Reset action status to idle
     }
   }
-  const unlinkSensor = async (macAddress) => {
-    let url = "http://localhost:8000/sensors/delete";
+
+  async function unlinkSensor(macAddress) {
+    setActionStatus("deleting"); // Set action status to deleting
+    const url = "http://localhost:8000/sensors/delete";
     try {
       const response = await axios.delete(url, {
-        data: { macAddress }, // Pass macAddress in the data object
+        data: { macAddress },
       });
       console.log(response.data); // Log the response data
+      fetchData();
     } catch (err) {
       console.log(err);
+    } finally {
+      setActionStatus("idle"); // Reset action status to idle
     }
-  };
-
-  useEffect(() => {
-    // Use useEffect to make the API request when the component mounts
-
-    fetchData(); // Call the fetchData function
-  }, []); // The empty array [] ensures the effect runs once on component mount
+  }
 
   return (
     <div>
-      <SensorHeader setForm={setForm} />
+      <SensorHeader fetchData={fetchData} setForm={setForm} />
 
-      {form == "shown" && <SensorForm setForm={setForm} />}
+      {form === "shown" && <SensorForm setForm={setForm} />}
 
-      {sensorData === null ? (
-        <div className="text-center">
-          <div
-            style={{ width: "8rem", height: "8rem" }}
-            class="spinner-grow text-primary mx-5"
-            role="status"
-          >
-            <span class="visually-hidden ">Loading...</span>
-          </div>
-          <div
-            style={{ width: "8rem", height: "8rem" }}
-            class="spinner-grow text-primary mx-5"
-            role="status"
-          >
-            <span class="visually-hidden ">Loading...</span>
-          </div>
-          <div
-            style={{ width: "8rem", height: "8rem" }}
-            class="spinner-grow text-primary mx-5"
-            role="status"
-          >
-            <span class="visually-hidden ">Loading...</span>
-          </div>
-        </div>
+      {actionStatus !== "idle" ? ( // Show animation during actionStatus other than "idle"
+        wait
+      ) : sensorData == null || sensorData.length === 0 ? (
+        <h1 className="text-center">
+          <TypeAnimation
+            sequence={["No sensor data available", 1500, "Add a module", 1500]}
+            style={{ color: "#4550E6", fontWeight: "bold" }}
+            speed={20}
+            repeat={Infinity}
+          />
+        </h1>
       ) : (
         <div className="row">
           {sensorData.map((group, index) => (
             <div
-              className="col-xl-3 col-lg-3 col-md-5  col-sm-8 col-10 mx-xl-4 mx-lg-4 mx-md-2"
+              className="col-xl-3 col-lg-3 col-md-5 col-sm-8 col-10 mx-xl-4 mx-lg-4 mx-md-2"
               key={index}
             >
-              <div className="card border-light   shadow p-3 mb-5 bg-body rounded">
+              <div className="card border-light shadow p-3 mb-5 bg-body rounded">
                 <div className="card-body">
                   <TiWeatherCloudy size={60} color="blue" />
-                  <h2 className="card-title  text-center ">{group.name}</h2>
+                  <h2 className="card-title text-center">{group.name}</h2>
                   <h6 className="card-subtitle my-2 text-muted">
                     <strong className="text-warning">Mac address : </strong>{" "}
                     {group.macAddress}
@@ -104,12 +126,12 @@ export const Sensor = () => {
                     <Link className="btn btn-outline-success col-5 my-2 mx-3 p">
                       <FaMapMarkerAlt /> View place
                     </Link>
-                    <Link
+                    <button
                       onClick={() => unlinkSensor(group.macAddress)}
                       className="btn btn-outline-danger col-5 my-2"
                     >
                       <MdDeleteForever /> Delete
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
