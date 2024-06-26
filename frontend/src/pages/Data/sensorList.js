@@ -15,29 +15,30 @@ import { SensorPosition } from "./sensorPosition";
 
 export const Sensor = () => {
   const [sensorData, setSensorData] = useState(null);
-  const [form, setForm] = useState("hidden");
-  const [schoolCard, setShcoolCard] = useState("hidden");
+  const [form, setForm] = useState("hidden"); //state to show or hide module form
+  const [schoolCard, setShcoolCard] = useState("hidden");//state to show or hide school card
   const [actionStatus, setActionStatus] = useState("idle"); // State for action status
+  const [currentPlace, setCurrentPlace] = useState(""); // State for current place
 
   const wait = (
     <div className="text-center ">
       <div
         style={{ width: "5rem", height: "5rem" }}
-        class="spinner-grow text-primary"
+        class="spinner-grow text-primary mx-4"
         role="status"
       >
         <span class="visually-hidden">Loading...</span>
       </div>
       <div
         style={{ width: "5rem", height: "5rem" }}
-        class="spinner-grow text-primary"
+        class="spinner-grow text-primary mx-4"
         role="status"
       >
         <span class="visually-hidden">Loading...</span>
       </div>
       <div
         style={{ width: "5rem", height: "5rem" }}
-        class="spinner-grow text-primary"
+        class="spinner-grow text-primary mx-4"
         role="status"
       >
         <span class="visually-hidden">Loading...</span>
@@ -83,7 +84,7 @@ export const Sensor = () => {
     <div>
       <SensorHeader fetchData={fetchData} setForm={setForm} />
       {console.log("card",schoolCard)}
-      {schoolCard === "shown" && <SensorPosition setShcoolCard={setShcoolCard}  />}
+      
 
       {form === "shown" && <SensorForm setForm={setForm} />}
 
@@ -131,7 +132,11 @@ export const Sensor = () => {
                       <BsDatabaseFillAdd /> All data
                     </Link>
                     <Link
-                      onClick={() => setShcoolCard("shown")}
+                      onClick={() => {
+                        setCurrentPlace(group.place)
+                        setShcoolCard("shown")
+                      }
+                    }
                       className="btn btn-outline-success col-5 my-2 mx-3 p"
                     >
                       <FaMapMarkerAlt /> View place
@@ -142,8 +147,11 @@ export const Sensor = () => {
                     >
                       <MdDeleteForever /> Delete
                     </button>
+                    {schoolCard === "shown" && <SensorPosition place={currentPlace} setShcoolCard={setShcoolCard}  />}
                   </div>
+                  
                 </div>
+                
               </div>
             </div>
           ))}

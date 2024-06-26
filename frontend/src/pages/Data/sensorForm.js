@@ -117,17 +117,21 @@ export const SensorForm = (props) => {
             aria-label="Default select example"
             defaultValue="sale 1" // Set the default value here
           >
-            <option value="sale 1" selected>
-              sale 1
+            <option value="Salle 1" selected>
+              Salle 1
             </option>
-            <option value="salle 2">salle 2</option>
-            <option value="salle 3">salle 3</option>
-            <option value="salle 4">salle 4</option>
-            <option value="salle 5">salle 5</option>
-            <option value="salle 6">salle 6</option>
-            <option value="salle de reunion">salle de reunion</option>
-            <option value="impression 3d">impression 3d</option>
-            <option value="salle video">salle video</option>
+            <option value="Salle 2">Salle 2</option>
+            <option value="Salle 3">Salle 3</option>
+            <option value="Salle 4">Salle 4</option>
+            <option value="Salle 5">Salle 5</option>
+            <option value="Salle 6">Salle 6</option>
+            <option value="Salle de reunion">Salle de reunion</option>
+            <option value="Salle video">Salle video</option>
+            <option value="Impression 3d">Impression 3d</option>
+            <option value="Detente">Detente</option>
+            <option value="Acceuil">Acceuil</option>
+            <option value="Direction">Direction</option>
+            <option value="Administratif">Administratif</option>
           </select>
         ) : (
           <input
