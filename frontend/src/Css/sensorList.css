@@ -1,0 +1,28 @@
+@keyframes uniqueIconAnimation {
+    0% {
+      transform: translateX(0) scale(1) rotate(0deg);
+      color: blue;
+    }
+    25% {
+      transform: translateX(250px) scale(1.2) rotate(20deg);
+      color: red;
+    }
+    50% {
+      transform: translateX(100px) scale(1) rotate(0deg);
+      color: green;
+    }
+    75% {
+      transform: translateX(50px) scale(0.8) rotate(-20deg);
+      color: #0dcaf0;
+
+    }
+    100% {
+      transform: translateX(0) scale(1) rotate(0deg);
+      color: blue;
+    }
+  }
+  
+  #card_icon {
+    animation: uniqueIconAnimation 7s infinite;
+  }
+  

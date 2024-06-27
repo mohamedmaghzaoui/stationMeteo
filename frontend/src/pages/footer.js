@@ -1,58 +1,69 @@
 import { Link } from "react-router-dom";
+import "../Css/footer.css"
 
 export const Footer = () => {
   return (
     <div>
-      <h4 style={{ color: "#5D6778" }}>Developpers</h4>
-      <div className="row">
-        <div className="col-1">
+      
+      <div style={{fontSize:"17px"}} className="row ">
+      
+        <div className="col-2 offset-1" style={{textDecoration:"none",color:"#828D9F"}}>
+         
+        <Link
+            
+            className="nav-link my-1 hover-link"
+            to={"/"}
+          >
+            Station
+          </Link>
+          
           <Link
-            style={{ textDecoration: "underline" }}
-            className="nav-link my-1 col"
+            
+            className="nav-link my-1 col hover-link"
             to={"/price"}
           >
             Price
           </Link>
           <Link
-            style={{ textDecoration: "underline" }}
-            className="nav-link my-1"
-            to={"/price"}
+            
+            className="nav-link my-1 hover-link"
+            to={"/sensor"}
           >
             Sensor
           </Link>
           <Link
-            style={{ textDecoration: "underline" }}
-            className="nav-link my-1"
-            to={"/price"}
+            
+            className="nav-link my-1 hover-link"
+            to={"/login"}
           >
-            Account
+            login
           </Link>
           <Link
-            style={{ textDecoration: "underline" }}
-            className="nav-link "
-            to={"/price"}
+            
+            className="nav-link hover-link "
+            to={"/SignUp"}
           >
-            Github
+            sign up
           </Link>
         </div>
-        <div className=" col">
+        <div className="col offset-1" style={{color:"#828D9F"}}>
           <Link
-            style={{ textDecoration: "underline" }}
-            className="nav-link my-1"
+            
+            className="nav-link my-1 hover-link"
             to={"/price"}
           >
             About us
           </Link>
           <Link
-            style={{ textDecoration: "underline" }}
-            className="nav-link my-1"
+            
+            className="nav-link my-1 hover-link"
             to={"/price"}
           >
             Contact us
           </Link>
           <Link
-            style={{ textDecoration: "underline" }}
-            className="nav-link my-1"
+            
+            className="nav-link my-1 hover-link"
             to={"/price"}
           >
             Privacy

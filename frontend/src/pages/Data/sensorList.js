@@ -9,6 +9,7 @@ import axios from "axios";
 import { SensorForm } from "./sensorForm";
 import { Link } from "react-router-dom";
 import { SensorPosition } from "./sensorPosition";
+import "../../Css/sensorList.css"
 
 
 
@@ -108,7 +109,7 @@ export const Sensor = () => {
             >
               <div className="card border-light shadow p-3 mb-5 bg-body rounded">
                 <div className="card-body">
-                  <TiWeatherCloudy size={60} color="blue" />
+                  <TiWeatherCloudy id="card_icon" size={60} color="blue" />
                   <h2 className="card-title text-center">{group.name}</h2>
                   <h6 className="card-subtitle my-2 text-muted">
                     <strong className="text-warning">Mac address : </strong>{" "}
