@@ -50,14 +50,14 @@ export const Footer = () => {
           <Link
             
             className="nav-link my-1 hover-link"
-            to={"/price"}
+            to={"/"}
           >
             About us
           </Link>
           <Link
             
             className="nav-link my-1 hover-link"
-            to={"/price"}
+            to={"/contact"}
           >
             Contact us
           </Link>

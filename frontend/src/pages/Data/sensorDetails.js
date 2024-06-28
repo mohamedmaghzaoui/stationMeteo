@@ -29,34 +29,70 @@ export const SensorDetails = () => {
           {sensorDetails.map((sensor, index) => (
             <div key={index} className="mt-3">
               <h2>Sensor {index + 1} Details</h2>
-              <table className="table table-bordered mt-3">
-                <tbody>
-                  <tr>
-                    <th scope="row">Pressure</th>
-                    <td>{sensor.pressure}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Humidity</th>
-                    <td>{sensor.humidity}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Altitude</th>
-                    <td>{sensor.altitude}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Air Quality</th>
-                    <td>{sensor.airQuality}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Temperature</th>
-                    <td>{sensor.temperature}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Time</th>
-                    <td>{sensor.time}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="card-deck row my-5">
+                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+                  <div className="d-flex align-items-center">
+                    <span className="display-3 me-3">🌬️</span>
+                    <div className="card-body">
+                      <h5 className="card-title">Pression</h5>
+                      <p className="card-text">
+                        {sensor.pressure.toFixed(2)} hPa
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+                  <div className="d-flex align-items-center">
+                    <span className="display-3 me-3">💧</span>
+                    <div className="card-body">
+                      <h5 className="card-title">Humidité</h5>
+                      <p className="card-text">
+                        {sensor.humidity.toFixed(2)} %
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+                  <div className="d-flex align-items-center">
+                    <span className="display-3 me-3">🏔️</span>
+                    <div className="card-body">
+                      <h5 className="card-title">Altitude</h5>
+                      <p className="card-text">
+                        {sensor.altitude.toFixed(2)} m
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+                  <div className="d-flex align-items-center">
+                    <span className="display-3 me-3">🌫️</span>
+                    <div className="card-body">
+                      <h5 className="card-title">Qualité de l'air</h5>
+                      <p className="card-text">{sensor.airQuality}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+                  <div className="d-flex align-items-center">
+                    <span className="display-3 me-3">🌡️</span>
+                    <div className="card-body">
+                      <h5 className="card-title">Température</h5>
+                      <p className="card-text">
+                        {sensor.temperature.toFixed(2)} °C
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+                  <div className="d-flex align-items-center">
+                    <span className="display-3 me-3">⏰</span>
+                    <div className="card-body">
+                      <h5 className="card-title">Date</h5>
+                      <p className="card-text">{sensor.time}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>

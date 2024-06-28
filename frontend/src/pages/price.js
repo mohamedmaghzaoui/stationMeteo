@@ -13,9 +13,11 @@ export const Price = () => {
       />
       <div className="my-5 position-absolute top-0 start-50 translate-middle-x text-center w-100">
         <br />
-        <h1 className="text-light mt-3 fw-normal text-opacity-75 display-2">
+        <br />
+        <h1 className=" text-light mt-3 fw-normal text-opacity-75 display-2">
           Pricing
         </h1>
+        <br/>
         <p className="text-white fs-4 opacity-75">
           Commercial use license, support, and bulk purchasing options for sensor modules
         </p>
