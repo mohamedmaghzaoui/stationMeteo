@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { FiRefreshCw } from "react-icons/fi";
 import axios from "axios";
 
 export const LastSensorDetails = () => {
@@ -19,11 +20,29 @@ export const LastSensorDetails = () => {
     }
 
     fetchSensorDetails();
-  }, [macAddress, name]);
+  }, []);
+  const refreshData = async () => {
+    try {
+      const apiResponse = await axios.get(
+        `http://localhost:8000/sensors/details/last?macAddress=${macAddress}&name=${name}`,
+      );
+      setSensor(apiResponse.data);
+      console.log(apiResponse.data); // Log the refreshed data
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <div className="container mt-4">
       <h1 className="my-2 text-center">Current Data</h1>
+      <button
+        onClick={() => refreshData()}
+        type="button"
+        className="offset-xl-10 offset-lg-9 offset-md-8 offset-sm-7 offset-6 btn btn-lg btn-outline-success"
+      >
+        refresh <FiRefreshCw />
+      </button>
 
       {sensor ? (
         <div>
