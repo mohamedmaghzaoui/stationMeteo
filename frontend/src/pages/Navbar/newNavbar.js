@@ -32,7 +32,7 @@ export const NewNavbar = () => {
               style={{ fontSize: "17px" }}
               className=" navbar-nav me-auto mb-2 mb-lg-0 container-fluid"
             >
-              <li className="nav-item  col-1  ">
+              <li className="nav-item  col-1   ">
                 <Link className=" nav-link fw-medium link-border  " to={"/"}>
                   🌦️ Station
                 </Link>
@@ -53,9 +53,6 @@ export const NewNavbar = () => {
                 </Link>
               </li>
 
-              <li className="nav-item px-xl-1 px-lg-1 col-1">
-                <Link className="nav-link fw-medium link-border">📄 API</Link>
-              </li>
               <li className="nav-item px-xl-1 px-lg-1 col-1 ">
                 <Link
                   to={"/contact"}

@@ -91,7 +91,7 @@ void loop()
   doc["altitude"] = altitude;
   doc["airQuality"] = mq135AnalogReading;
   doc["temperature"] = averageTemperature;
-  doc["macAddress"] = macAddress;
+  doc["macAddress"] = macAddress;""
   doc["name"] = "station_1";
 
   String jsonString;

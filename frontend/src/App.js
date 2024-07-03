@@ -8,7 +8,6 @@ import { Home } from "./pages/home";
 
 import { NotFound } from "./pages/notFound";
 import { Navbar } from "./pages/Navbar/navbar";
-import { Sensor } from "./pages/Data/sensorList";
 import { Login } from "./pages/User/login";
 import { SignUp } from "./pages/User/signUp";
 import { Price } from "./pages/price";
@@ -17,8 +16,10 @@ import { Footer } from "./pages/footer";
 import { UserProvider } from "./contexts/userContext";
 import { LastSensorDetails } from "./pages/Data/lastSensorDetails";
 import { SensorDetails } from "./pages/Data/sensorDetails";
+import { PrivateRoute } from "./private/privateRoute";
 
 import axios from "axios";
+import { Sensor } from "./pages/Data/sensorList";
 
 function App() {
   axios.defaults.withCredentials = true;
@@ -29,7 +30,10 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/sensor" element={<Sensor />} />
+            <Route
+              path="/sensor"
+              element={<PrivateRoute element={<Sensor />} />}
+            />
             <Route path="*" element={<NotFound />} />
             <Route path="/login" element={<Login />} />
             <Route path="/SignUp" element={<SignUp />} />

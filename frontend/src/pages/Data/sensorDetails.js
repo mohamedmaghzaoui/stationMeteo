@@ -20,7 +20,7 @@ export const SensorDetails = () => {
 
     fetchAllSensorDetails();
   }, [macAddress, name]);
-  const lastIndex = sensorDetails.length - 1;
+  const lastIndex = sensorDetails.length;
 
   return (
     <div className="container mt-4">

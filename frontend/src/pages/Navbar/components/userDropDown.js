@@ -11,6 +11,8 @@ export const UserDropDown = () => {
     try {
       const response = await axios.post(url);
       console.log(response);
+      setUsername((prev) => prev + "a"); //change username to re render component and request name for symfony server
+      navigate("/");
     } catch (err) {
       console.log(err);
 
