@@ -38,7 +38,7 @@ export const Price = () => {
         </Link>
       </div>
       <div className="my-3 offset-1  row">
-        <div className=" col-xl-3 col-lg-3 col-md-4 col-sm-5 col-9  ">
+        <div className=" col-xl-3 col-lg-3 col-md-4 col-sm-5 col-9 my-3 my-xl-2  ">
           <h2>Free Trial</h2>
           <span className="fw-bold display-6">0€</span>
           <br />
@@ -51,7 +51,7 @@ export const Price = () => {
             <li>Access to our site and web services</li>
           </ul>
         </div>
-        <div className=" col-xl-4 col-lg-4 col-md-5 col-sm-5 col-9 my-sm-4 my-3  mx-xl-5 mx-lg-5">
+        <div className=" col-xl-4 col-lg-4 col-md-5 col-sm-5 col-9 my-sm-4 my-3 my-xl-2  mx-xl-5 mx-lg-5">
           <h2>Basic Plan</h2>
           <span className="fw-bold display-6">105€</span>{" "}
           {/* Assuming 2 modules at 45€ each */}
@@ -67,7 +67,7 @@ export const Price = () => {
           </ul>
         </div>
 
-        <div className="col-xl-4 col-lg-3 col-md-5 my-md-5 my-sm-4 my-3 col-sm-5 col-9 ">
+        <div className="col-xl-4 col-lg-3 col-md-5 my-md-5 my-sm-4 my-3 my-xl-2 col-sm-5 col-9 ">
           <h2>Customizable Plan</h2>
           <span className="fw-bold display-6">45€ per module</span>
           <br />

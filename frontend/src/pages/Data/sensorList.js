@@ -11,7 +11,7 @@ import { SensorForm } from "./sensorForm";
 import { Link } from "react-router-dom";
 import { SensorPosition } from "./sensorPosition";
 import "../../Css/sensorList.css";
-
+import "../../Css/sensorDetails.css";
 export const Sensor = () => {
   const [sensorData, setSensorData] = useState(null);
   const [form, setForm] = useState("hidden"); //state to show or hide module form
