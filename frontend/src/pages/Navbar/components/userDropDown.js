@@ -19,7 +19,7 @@ export const UserDropDown = () => {
     }
   };
   return (
-    <li className="nav-item dropdown  offset-1  ">
+    <li className="nav-item dropdown  offset-xl-1  ">
       <a
         className="nav-link dropdown-toggle  "
         role="button"

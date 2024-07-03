@@ -5,19 +5,17 @@ import { FaDatabase, FaMapMarkerAlt } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { TypeAnimation } from "react-type-animation";
 import { BsDatabaseFillAdd } from "react-icons/bs";
+import { BiTimeFive } from "react-icons/bi";
 import axios from "axios";
 import { SensorForm } from "./sensorForm";
 import { Link } from "react-router-dom";
 import { SensorPosition } from "./sensorPosition";
-import "../../Css/sensorList.css"
-
-
-
+import "../../Css/sensorList.css";
 
 export const Sensor = () => {
   const [sensorData, setSensorData] = useState(null);
   const [form, setForm] = useState("hidden"); //state to show or hide module form
-  const [schoolCard, setShcoolCard] = useState("hidden");//state to show or hide school card
+  const [schoolCard, setShcoolCard] = useState("hidden"); //state to show or hide school card
   const [actionStatus, setActionStatus] = useState("idle"); // State for action status
   const [currentPlace, setCurrentPlace] = useState(""); // State for current place
 
@@ -84,8 +82,7 @@ export const Sensor = () => {
   return (
     <div>
       <SensorHeader fetchData={fetchData} setForm={setForm} />
-      {console.log("card",schoolCard)}
-      
+      {console.log("card", schoolCard)}
 
       {form === "shown" && <SensorForm setForm={setForm} />}
 
@@ -104,7 +101,7 @@ export const Sensor = () => {
         <div className="row">
           {sensorData.map((group, index) => (
             <div
-              className="col-xl-3 col-lg-3 col-md-5 col-sm-8 col-10 mx-xl-4 mx-lg-4 mx-md-2"
+              className="col-xl-3 col-lg-3 col-md-5 col-sm-8 col-10 mx-xl-4 mx-lg-4 mx-md-2 my-4"
               key={index}
             >
               <div className="card border-light shadow p-3 mb-5 bg-body rounded">
@@ -130,14 +127,13 @@ export const Sensor = () => {
                       to={`/sensorDetails/all/${group.macAddress}/${group.name}`}
                       className="btn btn-outline-info col-5"
                     >
-                      <BsDatabaseFillAdd /> All data
+                      <BiTimeFive /> History
                     </Link>
                     <Link
                       onClick={() => {
-                        setCurrentPlace(group.place)
-                        setShcoolCard("shown")
-                      }
-                    }
+                        setCurrentPlace(group.place);
+                        setShcoolCard("shown");
+                      }}
                       className="btn btn-outline-success col-5 my-2 mx-3 p"
                     >
                       <FaMapMarkerAlt /> View place
@@ -148,11 +144,14 @@ export const Sensor = () => {
                     >
                       <MdDeleteForever /> Delete
                     </button>
-                    {schoolCard === "shown" && <SensorPosition place={currentPlace} setShcoolCard={setShcoolCard}  />}
+                    {schoolCard === "shown" && (
+                      <SensorPosition
+                        place={currentPlace}
+                        setShcoolCard={setShcoolCard}
+                      />
+                    )}
                   </div>
-                  
                 </div>
-                
               </div>
             </div>
           ))}

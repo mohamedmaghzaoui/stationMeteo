@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 export const Price = () => {
-  const modulePrice = 8; // Price of one module in euros
+  const modulePrice = 45; // Price of one module in euros, assuming a 50% profit margin
 
   return (
-    <div>
+    <div className="position-relative container-fluid">
       <img
         style={{ height: "480px" }}
         className="img-fluid w-100"
@@ -37,10 +37,10 @@ export const Price = () => {
           Features
         </Link>
       </div>
-      <div className="my-3 offset-1 row">
-        <div className="mb-5 col">
+      <div className="my-3 offset-1  row">
+        <div className=" col-xl-3 col-lg-3 col-md-4 col-sm-5 col-9  ">
           <h2>Free Trial</h2>
-          <span className="fw-bold display-6">0€ </span>
+          <span className="fw-bold display-6">0€</span>
           <br />
           <Link to={"/contact"} className="btn btn-lg btn-primary my-4">
             Contact Us
@@ -51,41 +51,25 @@ export const Price = () => {
             <li>Access to our site and web services</li>
           </ul>
         </div>
-
-        <div className="mb-5 col">
+        <div className=" col-xl-4 col-lg-4 col-md-5 col-sm-5 col-9 my-sm-4 my-3  mx-xl-5 mx-lg-5">
           <h2>Basic Plan</h2>
-          <span className="fw-bold display-6">20€ </span>
+          <span className="fw-bold display-6">105€</span>{" "}
+          {/* Assuming 2 modules at 45€ each */}
           <br />
           <Link to={"/contact"} className="btn btn-lg btn-primary my-4">
             Contact Us
           </Link>
           <p>Includes:</p>
           <ul>
-            <li>2 free modules</li>
+            <li>2 modules</li>
             <li>Access to our site, web services, and server</li>
-            <li>API Integration</li>
+            <li>Option to customize and visualize module placement</li>
           </ul>
         </div>
 
-        <div className="mb-5 col">
-          <h2>Premium Plan</h2>
-          <span className="fw-bold display-6">40€ </span>
-          <br />
-          <Link to={"/contact"} className="btn btn-lg btn-primary my-4">
-            Contact Us
-          </Link>
-          <p>Includes:</p>
-          <ul>
-            <li>4 free modules</li>
-            <li>Access to our site, web services, server, and database</li>
-            <li>API Integration</li>
-            <li>User Management and Dashboard</li>
-            <li>Customizable Alerts</li>
-          </ul>
-        </div>
-        <div className=" ">
+        <div className="col-xl-4 col-lg-3 col-md-5 my-md-5 my-sm-4 my-3 col-sm-5 col-9 ">
           <h2>Customizable Plan</h2>
-          <span className="fw-bold display-6">8€ per module</span>
+          <span className="fw-bold display-6">45€ per module</span>
           <br />
           <Link to={"/contact"} className="btn btn-lg btn-primary my-4">
             Contact Us

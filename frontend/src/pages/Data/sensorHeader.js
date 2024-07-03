@@ -11,7 +11,7 @@ export const SensorHeader = (props) => {
       >
         <div className="row">
           <img
-            className="my-5 offset-xl-2 col-xl-4 img-fluid"
+            className="my-5 offset-xl-2 col-xl-4 img-fluid "
             src="https://images.ctfassets.net/fevtq3bap7tj/5LF6om44pOItONlk0lct0a/70d966ebeb374dcd8e5abe1c26cb2159/Technology_dashboard__1_.svg"
             alt=""
           />

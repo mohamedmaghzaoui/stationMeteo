@@ -20,17 +20,18 @@ export const SensorDetails = () => {
 
     fetchAllSensorDetails();
   }, [macAddress, name]);
+  const lastIndex = sensorDetails.length - 1;
 
   return (
     <div className="container mt-4">
-      <h1>All Sensor Details</h1>
+      <h1 className="text-center">History</h1>
       {sensorDetails.length > 0 ? (
         <div>
           {sensorDetails.map((sensor, index) => (
             <div key={index} className="mt-3">
-              <h2>Sensor {index + 1} Details</h2>
+              <h2>Module data {lastIndex - index}</h2>
               <div className="card-deck row my-5">
-                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-xl-3 col-lg-4 col-md-5 col-sm-5 col-9 mx-xl-5 mx-lg-5 mx-md-4 mx-3">
                   <div className="d-flex align-items-center">
                     <span className="display-3 me-3">🌬️</span>
                     <div className="card-body">
@@ -41,7 +42,7 @@ export const SensorDetails = () => {
                     </div>
                   </div>
                 </div>
-                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-xl-3 col-lg-4 col-md-5 col-sm-5 col-9 mx-xl-5 mx-lg-5 mx-md-3 mx-3">
                   <div className="d-flex align-items-center">
                     <span className="display-3 me-3">💧</span>
                     <div className="card-body">
@@ -52,7 +53,7 @@ export const SensorDetails = () => {
                     </div>
                   </div>
                 </div>
-                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+                <div className="card border-light shadow p-3 mb-5 bg-body rounded  col-xl-3 col-lg-4 col-md-5 col-sm-5 col-9 mx-xl-5 mx-lg-5 mx-md-4 mx-3">
                   <div className="d-flex align-items-center">
                     <span className="display-3 me-3">🏔️</span>
                     <div className="card-body">
@@ -63,7 +64,7 @@ export const SensorDetails = () => {
                     </div>
                   </div>
                 </div>
-                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+                <div className="card border-light shadow p-3 mb-5 bg-body rounded  col-xl-3 col-lg-4 col-md-5 col-sm-5 col-9 mx-xl-5 mx-lg-5 mx-md-4 mx-3">
                   <div className="d-flex align-items-center">
                     <span className="display-3 me-3">🌫️</span>
                     <div className="card-body">
@@ -72,7 +73,7 @@ export const SensorDetails = () => {
                     </div>
                   </div>
                 </div>
-                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+                <div className="card border-light shadow p-3 mb-5 bg-body rounded  col-xl-3 col-lg-4 col-md-5 col-sm-5 col-9 mx-xl-5 mx-lg-5 mx-md-4 mx-3">
                   <div className="d-flex align-items-center">
                     <span className="display-3 me-3">🌡️</span>
                     <div className="card-body">
@@ -83,7 +84,7 @@ export const SensorDetails = () => {
                     </div>
                   </div>
                 </div>
-                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+                <div className="card border-light shadow p-3 mb-5 bg-body rounded col-xl-3 col-lg-4 col-md-5 col-sm-5 col-9 mx-xl-5 mx-lg-5 mx-md-4 mx-3">
                   <div className="d-flex align-items-center">
                     <span className="display-3 me-3">⏰</span>
                     <div className="card-body">

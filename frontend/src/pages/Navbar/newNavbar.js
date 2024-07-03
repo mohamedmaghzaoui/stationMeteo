@@ -64,7 +64,7 @@ export const NewNavbar = () => {
                   📧 Contact
                 </Link>
               </li>
-              <li className="nav-item offset-xl-3  px-xl-3 px-lg-3 ">
+              <li className="nav-item offset-xl-3  px-xl-3 px-lg-3  ">
                 <Link
                   style={{ fontSize: "20px" }}
                   to={"/login"}

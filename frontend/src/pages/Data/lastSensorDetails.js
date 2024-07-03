@@ -23,12 +23,12 @@ export const LastSensorDetails = () => {
 
   return (
     <div className="container mt-4">
-      <h1 className="my-2 text-center">Last Sensor Details</h1>
+      <h1 className="my-2 text-center">Current Data</h1>
 
       {sensor ? (
         <div>
           <div className="card-deck row my-5">
-            <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+            <div className="card border-light shadow p-3 mb-5 bg-body rounded col-xl-3 col-lg-4 col-md-5 col-sm-5 col-9 mx-xl-5 mx-lg-5 mx-md-4 mx-3">
               <div className="d-flex align-items-center">
                 <span className="display-3 me-3">🌬️</span>
                 <div className="card-body">
@@ -37,7 +37,7 @@ export const LastSensorDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+            <div className="card border-light shadow p-3 mb-5 bg-body rounded col-xl-3 col-lg-4 col-md-5 col-sm-5 col-9 mx-xl-5 mx-lg-5 mx-md-3 mx-3">
               <div className="d-flex align-items-center">
                 <span className="display-3 me-3">💧</span>
                 <div className="card-body">
@@ -46,7 +46,7 @@ export const LastSensorDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+            <div className="card border-light shadow p-3 mb-5 bg-body rounded  col-xl-3 col-lg-4 col-md-5 col-sm-5 col-9 mx-xl-5 mx-lg-5 mx-md-4 mx-3">
               <div className="d-flex align-items-center">
                 <span className="display-3 me-3">🏔️</span>
                 <div className="card-body">
@@ -55,7 +55,7 @@ export const LastSensorDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+            <div className="card border-light shadow p-3 mb-5 bg-body rounded  col-xl-3 col-lg-4 col-md-5 col-sm-5 col-9 mx-xl-5 mx-lg-5 mx-md-4 mx-3">
               <div className="d-flex align-items-center">
                 <span className="display-3 me-3">🌫️</span>
                 <div className="card-body">
@@ -64,7 +64,7 @@ export const LastSensorDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+            <div className="card border-light shadow p-3 mb-5 bg-body rounded  col-xl-3 col-lg-4 col-md-5 col-sm-5 col-9 mx-xl-5 mx-lg-5 mx-md-4 mx-3">
               <div className="d-flex align-items-center">
                 <span className="display-3 me-3">🌡️</span>
                 <div className="card-body">
@@ -75,7 +75,7 @@ export const LastSensorDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="card border-light shadow p-3 mb-5 bg-body rounded col-3 mx-5">
+            <div className="card border-light shadow p-3 mb-5 bg-body rounded col-xl-3 col-lg-4 col-md-5 col-sm-5 col-9 mx-xl-5 mx-lg-5 mx-md-4 mx-3">
               <div className="d-flex align-items-center">
                 <span className="display-3 me-3">⏰</span>
                 <div className="card-body">
