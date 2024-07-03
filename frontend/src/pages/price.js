@@ -17,23 +17,34 @@ export const Price = () => {
         <h1 className=" text-light mt-3 fw-normal text-opacity-75 display-2">
           Pricing
         </h1>
-        <br/>
+        <br />
         <p className="text-white fs-4 opacity-75">
-          Commercial use license, support, and bulk purchasing options for sensor modules
+          Commercial use license, support, and bulk purchasing options for
+          sensor modules
         </p>
-        <Link to="/contact" type="button" className="mx-4 btn btn-primary btn-lg">
+        <Link
+          to="/contact"
+          type="button"
+          className="mx-4 btn btn-primary btn-lg"
+        >
           Contact Us
         </Link>
-        <Link to="/features" type="button" className="mx-4 btn btn-outline-light btn-lg">
+        <Link
+          to="/features"
+          type="button"
+          className="mx-4 btn btn-outline-light btn-lg"
+        >
           Features
         </Link>
       </div>
       <div className="my-3 offset-1 row">
         <div className="mb-5 col">
           <h2>Free Trial</h2>
-          <span className="fw-bold display-6">0€ </span> 
+          <span className="fw-bold display-6">0€ </span>
           <br />
-          <button className="btn btn-lg btn-primary my-4">Contact Us</button>
+          <Link to={"/contact"} className="btn btn-lg btn-primary my-4">
+            Contact Us
+          </Link>
           <p>Includes:</p>
           <ul>
             <li>1 free module to test for a week</li>
@@ -43,9 +54,11 @@ export const Price = () => {
 
         <div className="mb-5 col">
           <h2>Basic Plan</h2>
-          <span className="fw-bold display-6">20€ </span> 
+          <span className="fw-bold display-6">20€ </span>
           <br />
-          <Link className="btn btn-lg btn-primary my-4">Contact Us</Link>
+          <Link to={"/contact"} className="btn btn-lg btn-primary my-4">
+            Contact Us
+          </Link>
           <p>Includes:</p>
           <ul>
             <li>2 free modules</li>
@@ -56,9 +69,11 @@ export const Price = () => {
 
         <div className="mb-5 col">
           <h2>Premium Plan</h2>
-          <span className="fw-bold display-6">40€ </span> 
+          <span className="fw-bold display-6">40€ </span>
           <br />
-          <Link className="btn btn-lg btn-primary my-4">Contact Us</Link>
+          <Link to={"/contact"} className="btn btn-lg btn-primary my-4">
+            Contact Us
+          </Link>
           <p>Includes:</p>
           <ul>
             <li>4 free modules</li>
@@ -69,23 +84,19 @@ export const Price = () => {
           </ul>
         </div>
         <div className=" ">
-  <h2>Customizable Plan</h2>
-  <span className="fw-bold display-6">8€ per module</span> 
-  <br />
-  <Link className="btn btn-lg btn-primary my-4">Contact Us</Link>
-  <p>Includes:</p>
-  <ul>
-    <li>Option to purchase modules individually</li>
-    <li>Access to our site, web services, server, and database</li>
- 
-   
-  </ul>
-</div>
-
-        
-
+          <h2>Customizable Plan</h2>
+          <span className="fw-bold display-6">8€ per module</span>
+          <br />
+          <Link to={"/contact"} className="btn btn-lg btn-primary my-4">
+            Contact Us
+          </Link>
+          <p>Includes:</p>
+          <ul>
+            <li>Option to purchase modules individually</li>
+            <li>Access to our site, web services, server, and database</li>
+          </ul>
+        </div>
       </div>
-      
     </div>
   );
 };

@@ -121,5 +121,5 @@ void loop()
 
   http.end();
 
-  delay(20000); // Delay for 20 seconds before sending next request
+  delay(60000); // Delay for 20 seconds before sending next request
 }

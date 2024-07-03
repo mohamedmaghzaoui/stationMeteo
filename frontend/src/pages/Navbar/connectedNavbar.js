@@ -57,7 +57,7 @@ export const ConnectedNavbar = () => {
               </li>
 
               <li className="nav-item px-xl-1 px-lg-1 col-1">
-                <Link className="nav-link fw-medium link-border">📄 API</Link>
+                <Link className="nav-link fw-medium link-border">📄 Doc</Link>
               </li>
               <li className="nav-item px-xl-1 px-lg-1 col-1 ">
                 <Link
