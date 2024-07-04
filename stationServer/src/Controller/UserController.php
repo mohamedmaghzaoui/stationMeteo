@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
 class UserController extends AbstractController
 {
-    //function to verify user email for firest react registration form
+    //function to verify user email and existence  for test prupose
     #[Route('/users/verify', name: 'users/verify', methods: "Post")]
     public function verifyUser(Request $request, ManagerRegistry $doctrine): Response
     {
@@ -32,7 +32,7 @@ class UserController extends AbstractController
 
         return $this->json(["user doesnt not exist"]);
     }
-
+    //function to create a new user and add him to data base
     #[Route('/users', name: "add_users", methods: "Post")]
     public function addUser(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher): Response
     {
@@ -44,6 +44,7 @@ class UserController extends AbstractController
         if ($existingUser) {
             return $this->json(['Email already exists'], Response::HTTP_CONFLICT);
         }
+        // add user to database
         $user = new User($passwordHasher);
         $user->setEmail($data['email']);
         $user->setName($data['name']);
@@ -55,9 +56,17 @@ class UserController extends AbstractController
 
         return $this->json(['user added succesfully ']);
     }
+    //function to get 
     #[Route("/users", name: "get_users", methods: "Get")]
-    public function getUsers(Request $request, ManagerRegistry $doctrine): Response
+    public function getUsers(Request $request, ManagerRegistry $doctrine, #[CurrentUser] User $user): Response
     {
+        if (null == $user) {
+            return $this->json([
+                'invalid credentials',
+            ], Response::HTTP_UNAUTHORIZED);
+            # code...
+        }
+
         $repository = $doctrine->getRepository(User::class);
         $users = $repository->findAll();
         return $this->json($users);

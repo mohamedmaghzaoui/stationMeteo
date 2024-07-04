@@ -7,7 +7,7 @@ import "../../Css/sensorDetails.css";
 export const LastSensorDetails = () => {
   const { macAddress, name } = useParams();
   const [sensor, setSensor] = useState(null);
-
+  //get last sensor details from server using mac address and name as route parameters
   useEffect(() => {
     async function fetchSensorDetails() {
       const url = `http://localhost:8000/sensors/details/last?macAddress=${macAddress}&name=${name}`;
@@ -23,6 +23,7 @@ export const LastSensorDetails = () => {
     fetchSensorDetails();
   }, [macAddress, name]);
 
+  //async function to get data from server
   const refreshData = async () => {
     try {
       const apiResponse = await axios.get(
@@ -45,7 +46,7 @@ export const LastSensorDetails = () => {
       >
         Refresh <FiRefreshCw />
       </button>
-
+      {/* check if sensor and sensor values  already exist */}
       {sensor ? (
         <div>
           <div className="card-deck row my-5">
@@ -101,7 +102,7 @@ export const LastSensorDetails = () => {
                     {sensor.airQuality <= 150 ? (
                       <span className="button-33">Good</span>
                     ) : (
-                      <span></span>
+                      <span className="button-45">Bad</span>
                     )}
                   </div>
                 </div>

@@ -52,6 +52,7 @@ export const SignUp = () => {
         email: userData.email,
         password: userData.password,
       };
+      //automaticly login user after creating him
       const response2 = await axios.post(loginUrl, userAuthentication);
       console.log(response2);
       setUsername((prev) => prev + "a"); //change username to re rernder

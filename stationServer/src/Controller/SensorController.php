@@ -78,8 +78,9 @@ class SensorController extends AbstractController
         // Return a response
         return $this->json(['status' => 'Sensor data saved successfully']);
     }
+    //function to get all modules data for testing purpose
 
-
+    /*
     #[Route("sensors", name: "sensors")]
     public function getSensorData(ManagerRegistry $doctrine, #[CurrentUser] User $user): Response
     {
@@ -108,6 +109,9 @@ class SensorController extends AbstractController
 
         return $this->json(['sensorData' => $serializedSensors]);
     }
+        */
+
+
     //link user to sensor data
     #[Route("/sensors/add", name: "add_sensor_to_user")]
     public function addSensorToUser(Request $request, ManagerRegistry $doctrine, #[CurrentUser] User $user): Response
@@ -252,7 +256,7 @@ class SensorController extends AbstractController
         $sensor = $sensorRepository->findOneBy(
             ['macAddress' => $macAddress, 'name' => $name],
             ['time' => 'DESC'] // Sort by time in descending order to get the latest record
-        );;
+        );
 
         // If sensor not found, return 404 Not Found
         if (!$sensor) {

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../../Css/sensorHeader.css";
 
 export const SensorHeader = (props) => {
@@ -28,9 +29,9 @@ export const SensorHeader = (props) => {
             >
               Add Module
             </button>
-            <button className="btn btn-outline-info mx-3">
-              explore our Api
-            </button>
+            <Link to={"/contact"} className="btn  btn-outline-info mx-3">
+              Contact us
+            </Link>
           </div>
         </div>
       </div>

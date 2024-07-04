@@ -6,7 +6,7 @@ import "../../Css/sensorDetails.css";
 export const SensorDetails = () => {
   const { macAddress, name } = useParams();
   const [sensorDetails, setSensorDetails] = useState([]);
-
+  // get all sensor details from symfony server using mac address and name as parameters
   useEffect(() => {
     async function fetchAllSensorDetails() {
       const url = `http://localhost:8000/sensors/details/all/?macAddress=${macAddress}&name=${name}`;
@@ -21,7 +21,7 @@ export const SensorDetails = () => {
 
     fetchAllSensorDetails();
   }, [macAddress, name]);
-
+  // get last index to use it in module number
   const lastIndex = sensorDetails.length;
 
   return (
@@ -88,9 +88,9 @@ export const SensorDetails = () => {
                           <h5 className="card-title">Air Quality</h5>
 
                           {sensor.airQuality <= 150 ? (
-                            <span className="button-33">Good</span>
+                            <span className="button-33 ">Good</span>
                           ) : (
-                            <span></span>
+                            <span className="button-45">Bad</span>
                           )}
                         </div>
                       </div>

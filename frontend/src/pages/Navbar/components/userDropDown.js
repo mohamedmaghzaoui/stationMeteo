@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const UserDropDown = () => {
   const { username, setUsername } = useContext(UserContext);
   const navigate = useNavigate();
+  //logout user using logout route of symfony server
   const Logout = async () => {
     let url = "http://localhost:8000/logout";
     try {

@@ -29,6 +29,7 @@ class SecurityController extends AbstractController
             "roles" => $user->getRoles()
         ]);
     }
+    // logout function and route
     #[Route("logout", name: "app_logout")]
     public function logout()
     {
