@@ -40,20 +40,15 @@ export const UserDropDown = () => {
         )}
 
         <li>
-          <a className="dropdown-item">
-            <span className="mx-1">Profile</span>
-          </a>
-        </li>
-        <li>
-          <a className="dropdown-item">
-            <span className="mx-1">User settings</span>
-          </a>
-        </li>
-        <li>
           <span className="dropdown-item">
-            <span onClick={() => Logout()} className="mx-1 text-danger fw-bold">
+            <button
+              onClick={() => {
+                Logout();
+              }}
+              className="mx-1 btn btn-outline-danger fw-bold"
+            >
               Logout
-            </span>
+            </button>
           </span>
         </li>
       </ul>
