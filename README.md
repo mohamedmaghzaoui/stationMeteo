@@ -169,4 +169,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 Hi, I'm Mohamed Maghzaoui, a passionate developer with experience in front-end and back-end technologies. You can explore my work and projects online:
 
 - 🌐 [My Website](https://mohamedmaghzaoui.online/)
-- 🔗 [LinkedIn Profile](https://www.linkedin.com/in/mohamed-maghzaoui/)
+- 🔗 [LinkedIn Profile](https://www.linkedin.com/in/mohamed-maghzaoui-577044256/)
