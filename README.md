@@ -166,7 +166,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## About Me 👨‍💻
 
-Hi, I'm Mohamed Maghzaoui, a passionate software engineer with a wide range of expertise spanning from web development to IoT, cloud, and networking technologies.You can explore my work and projects online:
+Hi, I'm Mohamed Maghzaoui, a passionate software engineer with a wide range of expertise spanning from web development to IoT, cloud, and networking technologies. You can explore my work and projects online:
 
 - 🌐 [My Website](https://mohamedmaghzaoui.online/)
 - 🔗 [LinkedIn Profile](https://www.linkedin.com/in/mohamed-maghzaoui-577044256/)
