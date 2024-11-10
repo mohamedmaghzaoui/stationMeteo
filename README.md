@@ -1,29 +1,43 @@
-# Mise en place d'une station météo
+# 🌐 Centralized Station Meteo
 
+This project is a **Centralized  Station Meteo**, featuring a **React frontend** and a **Symfony backend**. The system collects environmental data from connected sensors and displays it in real-time through a web interface. It includes modules with various sensors managed by **ESP32 microcontrollers**, allowing users to monitor data such as air quality and temperature remotely.
 
+## 🌟 Features
+- **Real-time Data Visualization**: View live environmental readings from MQ-135 (air quality) and BME280 (temperature, altitude, humidity, and pressure) sensors.
+- **ESP32 Integration**: Sensors are connected to ESP32 microcontrollers, sending data to the backend via API endpoints.
+- **REST API with Symfony**: The backend API, built with Symfony, manages data handling and ensures seamless communication between ESP32 modules and the frontend.
+- **Responsive Frontend in React**: The frontend interface, built in React, provides a clean and intuitive layout for users to view and analyze environmental data.
 
-## Idée Générale
+## 🚀 Getting Started
 
-Le but de ce projet est de récolter des données sur la condition météorologique d'un lieu en interieur. Pour cela nous allons créer des modules équipé de capteurs qui seront connecter par wifi à une base de donnée qui transmettra les informations sur site web pour être utilisé par tous.
+### Prerequisites
+- **Node.js** and **npm** (for the React frontend)
+- **PHP** and **Composer** (for the Symfony backend)
+- **ESP32 microcontroller** with MQ-135 and BME280 sensors
+- **Git** for version control
 
-## Liaison des modules avec la base de donnée
+### Installation
 
-Pour réaliser cette étapes, nous allons utilisé la méthode MQTT, qui fait envoyer les différentes informations (topic) des modules vers un serveur MQTT, tandis que la base de donnée écoute ce serveur à interval régulier et stock les informations.
+#### 1. Clone the Repository
+```bash
+git clone https://github.com/mohamedmaghzaoui/stationMeteo.git
+```
+#### 2. Backend Setup (Symfony)
+```bash
+cd backend
+composer install
+symfony serve
+```
+#### 3. Frontend Setup (React):
+```bash
+cd frontend
+npm install
+npm start
 
-## Hardware
+```
+## 📈 Usage
+The ESP32 modules continuously send sensor data to the Symfony backend.
+The React frontend displays this data in real-time for user analysis.
 
-Nous devrons faire nous même nos campteur avec des pièces fournies. Nous connecterons ceux-ci en wifi à la Raspberry pi qui contient la base de donnée ainsi que le site web.
-
-## Sources
-
-vous pouvez retrouver notre brouillon sur :
-[Brouillon](https://excalidraw.com/#room=de8b00aa47619d74fe9c,Nj7dCG1oobuYImcY2eiGCA "lien vers le brouillon")
-
-
-
-
-
----
-
-## Interface avec l'utilisateur
-
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
